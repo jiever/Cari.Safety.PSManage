@@ -1,0 +1,27 @@
+﻿=================== Release 1.0.0.4 2015-12-22 =====================
+BugFix
+•permission logic error
+•Account_AccountResourceGetByActive PROCEDURE upgrade
+USE [SafetySysNew]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Account_AccountResourceGetByActive]
+(
+   @IsActive int
+)
+AS
+SELECT  
+      dbo.AccountResourceData.ResourceID, dbo.AccountResourceData.ResourcePath, 
+      dbo.AccountResourceData.ResourceName, 
+      dbo.AccountResourceData.ResourceRemark, 
+      dbo.AccountResourceData.ResourceIsBeControl, 
+      dbo.AccountResourceData.ResourceTypeID,
+      dbo.AccountResourceData.SystemID,
+      dbo.AccountResourceData.IsActive,
+      dbo.AccountResourceData.DisplayName
+FROM dbo.AccountResourceData 
+where IsActive = @IsActive
+RETURN

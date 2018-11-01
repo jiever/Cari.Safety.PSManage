@@ -1,0 +1,12 @@
+﻿=================== Release 1.0.0.4 2015-12-22 =====================
+Improvement
+•defalut write servicelocator error message
+=================== Release 1.0.0.5 2016-01-05 =====================
+Improvement
+•upgrade IExpressionEval
+=================== Release 1.0.0.6 2016-01-14 =====================
+BugFix
+•add more safety and reasonable call by use wcf client
+=================== Release 1.0.0.7 2016-01-25 =====================
+BugFix
+•add ModelHelper.CopyModel

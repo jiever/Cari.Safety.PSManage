@@ -1,0 +1,549 @@
+﻿=================== Release 1.0.0.4 2015-12-22 =====================
+BugFix
+•permission logic error
+•Account_AccountResourceGetByActive PROCEDURE upgrade
+USE [SafetySysNew]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Account_AccountResourceGetByActive]
+(
+   @IsActive int
+)
+AS
+SELECT  
+      dbo.AccountResourceData.ResourceID, dbo.AccountResourceData.ResourcePath, 
+      dbo.AccountResourceData.ResourceName, 
+      dbo.AccountResourceData.ResourceRemark, 
+      dbo.AccountResourceData.ResourceIsBeControl, 
+      dbo.AccountResourceData.ResourceTypeID,
+      dbo.AccountResourceData.SystemID,
+      dbo.AccountResourceData.IsActive,
+      dbo.AccountResourceData.DisplayName
+FROM dbo.AccountResourceData 
+where IsActive = @IsActive
+RETURN
+
+=================== Release 1.0.0.5 2015-12-29 =====================
+增加员工在职状态：0：在职；1：离职；2：退休
+alter table AccountUser  add   PositionStatus   nvarchar(max)  NOT NULL default '在职'
+
+USE [SafetySysNew]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserAdd]    Script Date: 2015/12/30 9:16:17 ******/
+DROP PROCEDURE [dbo].[Account_AccountUserAdd]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserAdd]    Script Date: 2015/12/30 9:16:17 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*
+Author      :jkliu
+Date        :2004-12-3
+Description :添加用户
+*/
+
+CREATE PROCEDURE [dbo].[Account_AccountUserAdd]
+
+	(
+		@EmployeeID varchar(50), 
+		@EmployeeName varchar(50), 
+		@UserID varchar(50), 
+		@UserPass varchar(50), 
+		@DepartmentRoleID varchar(50), 
+		@LevelRoleID varchar(50), 
+		@RankRoleID varchar(50), 
+		@UserDefinedRoleID varchar(50)	,
+			@PositionStatus  varchar(10)
+	)
+
+AS
+
+INSERT INTO 
+	AccountUser(EmployeeID, EmployeeName, UserID, UserPass, DepartmentRoleID, LevelRoleID, RankRoleID, UserDefinedRoleID,PositionStatus ) 
+	Values(@EmployeeID, @EmployeeName, @UserID, @UserPass, @DepartmentRoleID, @LevelRoleID, @RankRoleID, @UserDefinedRoleID,@PositionStatus)	
+	/* SET NOCOUNT ON */
+	RETURN
+
+GO
+
+
+
+
+
+USE [SafetySysNew]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserModify]    Script Date: 2015/12/30 9:16:57 ******/
+DROP PROCEDURE [dbo].[Account_AccountUserModify]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserModify]    Script Date: 2015/12/30 9:16:57 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*
+Author      :jkliu
+Date        :2004-12-3
+Description :修改用户
+*/
+
+CREATE PROCEDURE [dbo].[Account_AccountUserModify]
+
+	(
+		@EmployeeID varchar(50), 
+		@OldEmployeeID varchar(50), 
+		@EmployeeName varchar(50), 
+		@UserID varchar(50), 
+		@UserPass varchar(50), 
+		@DepartmentRoleID varchar(50), 
+		@LevelRoleID varchar(50), 
+		@RankRoleID varchar(50), 
+		@UserDefinedRoleID varchar(50),
+	    @PositionStatus  varchar(10)	
+	)
+
+AS
+/* SET NOCOUNT ON */
+
+UPDATE AccountUser SET 
+	 EmployeeID=@EmployeeID,EmployeeName=@EmployeeName, UserID=@UserID, UserPass=@UserPass, DepartmentRoleID=@DepartmentRoleID, LevelRoleID=@LevelRoleID, RankRoleID=@RankRoleID, UserDefinedRoleID=@UserDefinedRoleID,PositionStatus =@PositionStatus 
+	 where EmployeeID=@OldEmployeeID
+	
+	
+	RETURN
+
+GO
+
+
+
+
+
+USE [SafetySysNew]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserGetUserByEmployeeIDReader]    Script Date: 2015/12/29 16:44:02 ******/
+DROP PROCEDURE [dbo].[Account_AccountUserGetUserByEmployeeIDReader]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserGetUserByEmployeeIDReader]    Script Date: 2015/12/29 16:44:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*
+Author      :jkliu
+Date        :2004-12-21
+Description :返回记录
+*/
+
+CREATE PROCEDURE [dbo].[Account_AccountUserGetUserByEmployeeIDReader]
+
+	(
+	  @EmployeeID varchar(50)
+	)
+
+AS
+--SELECT PersonBlogTypeID, PersonBlogTypeName,EmployeeID	FROM dbo.PersonBlogType
+SELECT 
+	dbo.AccountUser.EmployeeID, dbo.AccountUser.EmployeeName, 
+      dbo.AccountUser.UserID, dbo.AccountUser.UserPass, 
+      dbo.AccountUser.DepartmentRoleID,  dbo.AccountUser.PositionStatus,
+      dbo.AccountDepartmentRole.DepartmentRoleName, dbo.AccountUser.LevelRoleID, 
+      dbo.AccountLevelRole.LevelRoleName, dbo.AccountUser.RankRoleID, 
+      dbo.AccountRankRole.RankRoleName, dbo.AccountUser.UserDefinedRoleID, 
+      dbo.AccountUserDefinedRole.UserDefinedRoleName
+	
+FROM dbo.AccountUser INNER JOIN
+      dbo.AccountDepartmentRole ON 
+      dbo.AccountUser.DepartmentRoleID = dbo.AccountDepartmentRole.DepartmentRoleID INNER
+       JOIN
+      dbo.AccountLevelRole ON 
+      dbo.AccountUser.LevelRoleID = dbo.AccountLevelRole.LevelRoleID INNER JOIN
+      dbo.AccountRankRole ON 
+      dbo.AccountUser.RankRoleID = dbo.AccountRankRole.RankRoleID INNER JOIN
+      dbo.AccountUserDefinedRole ON 
+      dbo.AccountUser.UserDefinedRoleID = dbo.AccountUserDefinedRole.UserDefinedRoleID
+where 
+	EmployeeID=@EmployeeID
+
+	/* SET NOCOUNT ON */
+	RETURN
+
+GO
+
+USE [SafetySysNew]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserGetByCons2]    Script Date: 2015/12/30 9:17:54 ******/
+DROP PROCEDURE [dbo].[Account_AccountUserGetByCons2]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserGetByCons2]    Script Date: 2015/12/30 9:17:54 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[Account_AccountUserGetByCons2] 
+	 
+	(
+	@UserName varchar(50),
+	@UserDefinedRoleID varchar(50),
+	@DepartmentRoleID varchar(50),
+	@RankRoleID varchar(50),
+	@PositionStatus  varchar(10)
+	)
+	 
+AS
+	 			SELECT dbo.AccountUser.EmployeeID, dbo.AccountUser.EmployeeName, 
+      dbo.AccountUser.UserID, dbo.AccountUser.UserPass, 
+      dbo.AccountUser.DepartmentRoleID,  dbo.AccountUser.PositionStatus ,
+      dbo.AccountDepartmentRole.DepartmentRoleName, 
+      dbo.AccountUser.UserDefinedRoleID, dbo.AccountUser.RankRoleID, 
+      dbo.AccountUser.LevelRoleID, dbo.AccountUserDefinedRole.UserDefinedRoleName, 
+      dbo.AccountRankRole.RankRoleName, dbo.AccountLevelRole.LevelRoleName,dbo.AccountUser.LastLoginTime,dbo.AccountUser.IPAddress 
+FROM dbo.AccountUser LEFT JOIN
+      dbo.AccountDepartmentRole ON 
+      dbo.AccountUser.DepartmentRoleID = dbo.AccountDepartmentRole.DepartmentRoleID LEFT
+       JOIN
+      dbo.AccountLevelRole ON 
+      dbo.AccountUser.LevelRoleID = dbo.AccountLevelRole.LevelRoleID LEFT JOIN
+      dbo.AccountRankRole ON 
+      dbo.AccountUser.RankRoleID = dbo.AccountRankRole.RankRoleID LEFT JOIN
+      dbo.AccountUserDefinedRole ON 
+      dbo.AccountUser.UserDefinedRoleID = dbo.AccountUserDefinedRole.UserDefinedRoleID
+      
+      where AccountUser.DepartmentRoleID=
+		case 
+		     when @DepartmentRoleID <> 'null' 
+		     then @DepartmentRoleID 
+			 else AccountUser.DepartmentRoleID
+		end
+         and dbo.AccountUser.UserDefinedRoleID=
+		case 
+			when  @UserDefinedRoleID<>'null' 
+			then @UserDefinedRoleID 
+			else AccountUser.UserDefinedRoleID 
+		end
+          and dbo.AccountUser.RankRoleID = 
+		  case 
+				when @RankRoleID<>'null'
+				then @RankRoleID 
+				else AccountUser.RankRoleID 
+		  end
+		   and dbo.AccountUser.PositionStatus  = 
+		  case 
+				when @PositionStatus<>'null'
+				then @PositionStatus
+				else AccountUser.PositionStatus 
+		  end
+		 
+          and (AccountUser.EmployeeName like '%'+@UserName+'%' or AccountUser.EmployeeID=@UserName )
+
+		  print  @PositionStatus 
+	RETURN
+
+
+GO
+
+=================== Release 1.0.0.6 2016-01-07 =====================
+Improvement
+•make AccountUser sortable
+
+alter table AccountUser add [Order] int null
+
+
+USE [SafetySysNew]
+GO
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserGetByCons2]    Script Date: 2016/1/7 13:45:17 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER PROCEDURE [dbo].[Account_AccountUserGetByCons2] 
+	 
+	(
+	@UserName varchar(50),
+	@UserDefinedRoleID varchar(50),
+	@DepartmentRoleID varchar(50),
+	@RankRoleID varchar(50),
+	@PositionStatus  varchar(10)
+	)
+	 
+AS
+	 			SELECT dbo.AccountUser.EmployeeID, dbo.AccountUser.EmployeeName, 
+      dbo.AccountUser.UserID, dbo.AccountUser.UserPass, 
+      dbo.AccountUser.DepartmentRoleID,  dbo.AccountUser.PositionStatus ,
+      dbo.AccountDepartmentRole.DepartmentRoleName, 
+      dbo.AccountUser.UserDefinedRoleID, dbo.AccountUser.RankRoleID, 
+      dbo.AccountUser.LevelRoleID, dbo.AccountUserDefinedRole.UserDefinedRoleName, 
+      dbo.AccountRankRole.RankRoleName, dbo.AccountLevelRole.LevelRoleName,dbo.AccountUser.LastLoginTime,dbo.AccountUser.IPAddress 
+FROM dbo.AccountUser LEFT JOIN
+      dbo.AccountDepartmentRole ON 
+      dbo.AccountUser.DepartmentRoleID = dbo.AccountDepartmentRole.DepartmentRoleID LEFT
+       JOIN
+      dbo.AccountLevelRole ON 
+      dbo.AccountUser.LevelRoleID = dbo.AccountLevelRole.LevelRoleID LEFT JOIN
+      dbo.AccountRankRole ON 
+      dbo.AccountUser.RankRoleID = dbo.AccountRankRole.RankRoleID LEFT JOIN
+      dbo.AccountUserDefinedRole ON 
+      dbo.AccountUser.UserDefinedRoleID = dbo.AccountUserDefinedRole.UserDefinedRoleID
+      
+      where AccountUser.DepartmentRoleID=
+		case 
+		     when @DepartmentRoleID <> 'null' 
+		     then @DepartmentRoleID 
+			 else AccountUser.DepartmentRoleID
+		end
+         and dbo.AccountUser.UserDefinedRoleID=
+		case 
+			when  @UserDefinedRoleID<>'null' 
+			then @UserDefinedRoleID 
+			else AccountUser.UserDefinedRoleID 
+		end
+          and dbo.AccountUser.RankRoleID = 
+		  case 
+				when @RankRoleID<>'null'
+				then @RankRoleID 
+				else AccountUser.RankRoleID 
+		  end
+		   and dbo.AccountUser.PositionStatus  = 
+		  case 
+				when @PositionStatus<>'null'
+				then @PositionStatus
+				else AccountUser.PositionStatus 
+		  end
+		 
+          and (AccountUser.EmployeeName like '%'+@UserName+'%' or AccountUser.EmployeeID=@UserName )
+		  order by dbo.AccountUser.[Order]
+		  print  @PositionStatus 
+	RETURN
+
+
+USE [SafetySysNew]
+GO
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserGetUserByEmployeeIDReader]    Script Date: 2016/1/7 13:42:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/*
+Author      :jkliu
+Date        :2004-12-21
+Description :返回记录
+*/
+
+ALTER PROCEDURE [dbo].[Account_AccountUserGetUserByEmployeeIDReader]
+
+	(
+	  @EmployeeID varchar(50)
+	)
+
+AS
+--SELECT PersonBlogTypeID, PersonBlogTypeName,EmployeeID	FROM dbo.PersonBlogType
+SELECT 
+	dbo.AccountUser.EmployeeID, dbo.AccountUser.EmployeeName, 
+      dbo.AccountUser.UserID, dbo.AccountUser.UserPass, 
+      dbo.AccountUser.DepartmentRoleID,  dbo.AccountUser.PositionStatus,
+      dbo.AccountDepartmentRole.DepartmentRoleName, dbo.AccountUser.LevelRoleID, 
+      dbo.AccountLevelRole.LevelRoleName, dbo.AccountUser.RankRoleID, 
+      dbo.AccountRankRole.RankRoleName, dbo.AccountUser.UserDefinedRoleID, 
+      dbo.AccountUserDefinedRole.UserDefinedRoleName, dbo.AccountUser.[Order]
+	
+FROM dbo.AccountUser INNER JOIN
+      dbo.AccountDepartmentRole ON 
+      dbo.AccountUser.DepartmentRoleID = dbo.AccountDepartmentRole.DepartmentRoleID INNER
+       JOIN
+      dbo.AccountLevelRole ON 
+      dbo.AccountUser.LevelRoleID = dbo.AccountLevelRole.LevelRoleID INNER JOIN
+      dbo.AccountRankRole ON 
+      dbo.AccountUser.RankRoleID = dbo.AccountRankRole.RankRoleID INNER JOIN
+      dbo.AccountUserDefinedRole ON 
+      dbo.AccountUser.UserDefinedRoleID = dbo.AccountUserDefinedRole.UserDefinedRoleID
+where 
+	EmployeeID=@EmployeeID
+
+	/* SET NOCOUNT ON */
+	RETURN
+
+
+USE [SafetySysNew]
+GO
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserAdd]    Script Date: 2016/1/7 13:38:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/*
+Author      :jkliu
+Date        :2004-12-3
+Description :添加用户
+*/
+
+ALTER PROCEDURE [dbo].[Account_AccountUserAdd]
+
+	(
+		@EmployeeID varchar(50), 
+		@EmployeeName varchar(50), 
+		@UserID varchar(50), 
+		@UserPass varchar(50), 
+		@DepartmentRoleID varchar(50), 
+		@LevelRoleID varchar(50), 
+		@RankRoleID varchar(50), 
+		@UserDefinedRoleID varchar(50)	,
+			@PositionStatus  varchar(10),
+			@Order int
+	)
+
+AS
+
+INSERT INTO 
+	AccountUser(EmployeeID, EmployeeName, UserID, UserPass, DepartmentRoleID, LevelRoleID, RankRoleID, UserDefinedRoleID,PositionStatus ,[Order]) 
+	Values(@EmployeeID, @EmployeeName, @UserID, @UserPass, @DepartmentRoleID, @LevelRoleID, @RankRoleID, @UserDefinedRoleID,@PositionStatus,@Order)	
+	/* SET NOCOUNT ON */
+	RETURN
+
+USE [SafetySysNew]
+GO
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserModify]    Script Date: 2016/1/7 13:35:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/*
+Author      :jkliu
+Date        :2004-12-3
+Description :修改用户
+*/
+
+ALTER PROCEDURE [dbo].[Account_AccountUserModify]
+
+	(
+		@EmployeeID varchar(50), 
+		@OldEmployeeID varchar(50), 
+		@EmployeeName varchar(50), 
+		@UserID varchar(50), 
+		@UserPass varchar(50), 
+		@DepartmentRoleID varchar(50), 
+		@LevelRoleID varchar(50), 
+		@RankRoleID varchar(50), 
+		@UserDefinedRoleID varchar(50),
+	    @PositionStatus  varchar(10),
+		@Order int	
+	)
+
+AS
+/* SET NOCOUNT ON */
+
+UPDATE AccountUser SET 
+	 EmployeeID=@EmployeeID,EmployeeName=@EmployeeName, UserID=@UserID, UserPass=@UserPass, DepartmentRoleID=@DepartmentRoleID, LevelRoleID=@LevelRoleID, RankRoleID=@RankRoleID, UserDefinedRoleID=@UserDefinedRoleID,PositionStatus =@PositionStatus 
+	 ,[Order]=@Order
+	 where EmployeeID=@OldEmployeeID
+	
+	
+	RETURN
+
+
+USE [SafetySysNew]
+GO
+/****** Object:  StoredProcedure [dbo].[Account_AccountUserGetAll]    Script Date: 2016/1/8 9:55:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+	
+ALTER PROCEDURE [dbo].[Account_AccountUserGetAll]
+
+	
+
+AS
+/* SET NOCOUNT ON */
+
+--SELECT EmployeeID, EmployeeName, UserID, UserPass, DepartmentRoleID, LevelRoleID, RankRoleID, UserDefinedRoleID	FROM dbo.AccountUser
+SELECT AccountUser.EmployeeID, AccountUser.EmployeeName, AccountUser.UserID, 
+      AccountUser.UserPass, AccountUser.DepartmentRoleID, 
+      AccountDepartmentRole.DepartmentRoleName, AccountUser.LevelRoleID, 
+      AccountLevelRole.LevelRoleName, AccountUser.RankRoleID, 
+      AccountRankRole.RankRoleName, AccountUser.UserDefinedRoleID, 
+      AccountUserDefinedRole.UserDefinedRoleName,AccountUser.IPAddress,AccountUser.[Order]
+FROM AccountUser INNER JOIN
+      AccountDepartmentRole ON 
+      AccountUser.DepartmentRoleID = AccountDepartmentRole.DepartmentRoleID INNER JOIN
+      AccountLevelRole ON 
+      AccountUser.LevelRoleID = AccountLevelRole.LevelRoleID INNER JOIN
+      AccountRankRole ON 
+      AccountUser.RankRoleID = AccountRankRole.RankRoleID INNER JOIN
+      AccountUserDefinedRole ON 
+      AccountUser.UserDefinedRoleID = AccountUserDefinedRole.UserDefinedRoleID 
+        order by AccountUser.UserDefinedRoleID, AccountUser.EmployeeName 
+	RETURN
+
+
+=================== Release 1.0.0.7 2016-02-29 =====================
+rollback
+=================== Release 1.0.0.8 2016-03-10 =====================
+Improvement
+•now can see the role's or user's rights in RoleRightDefine.aspx and UserRightDefine.aspx
+
+USE [SafetySysNew]
+GO
+
+/****** Object:  Table [dbo].[AccountVisibleDept]    Script Date: 2016/3/9 9:16:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AccountVisibleDept](
+	[Type] [int] NOT NULL,
+	[ResourceId] [int] NOT NULL,
+	[RelateId] [nvarchar](50) NOT NULL,
+	[DeptId] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_AccountVisibleDept] PRIMARY KEY CLUSTERED 
+(
+	[Type] ASC,
+	[ResourceId] ASC,
+	[RelateId] ASC,
+	[DeptId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+=================== Release 1.0.0.9 2016-03-16 =====================
+bugfix
+
+=================== Release 1.0.0.10 2016-03-23 =====================
+bugfix
+
+=================== Release 1.0.0.11 2016-03-30 =====================
+add UpdateEmployeeState for AccountUserData that enable update the employee's rank,department or position status through the webservice.
+
+=================== Release 1.0.0.12 2016-05-25 =====================
+add query and update method in AccountUserIdentityCardData for Cari.Framework.UI.SystemManage
+
+=================== Release 1.0.0.13 2016-08-12 =====================
+工作流中需要实现角色权限继承关系，而原先GetResourceRelateRoleInfo和GetResourceRelateUserInfo无法符合业务需求，
+所以在AccountResourceData中增加GetResourceRelateRoleInfo和GetResourceRelateUserInfo函数用于获取所有的资源列表。
+
+=================== Release 1.0.0.14 2016-10-11 =====================
+人员在职状态添加停工状态
