@@ -1,0 +1,132 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Page.master.cs" Inherits="CariWeb.Shared.Page" %>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head >
+    <meta charset="utf-8">
+    <meta content-type="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <link rel="icon" href="../../favicon.ico">
+    <title>开发框架统一模板</title>
+
+    <script src="<%=MainHost %>/api/source/script" type="text/javascript"></script>
+    <script type="text/javascript">
+        loadCss("/Styles/css/bootstrap.min.css");
+        loadCss("/Styles/css/bootstrap-custom.css");
+        loadCss("/Styles/dashboard.css");
+        loadCss("/Styles/validform.css");
+        loadCss("/Scripts/pager/kkpager_blue.css");
+        loadCss("/Scripts/toast/jquery.toast.min.css");
+    </script>
+    <script type="text/javascript">
+        loadScript("/Scripts/jquery-1.9.1.min.js");
+        loadScript("/Scripts/layer/layer.js");
+        loadScript("/Scripts/layer.dialog.js");
+        loadScript("/Scripts/autoheight.js");
+        loadScript("/Scripts/ajax.request.js");
+        loadScript("/Scripts/bootstrap.min.js");
+        loadScript("/Scripts/validform/validform_5.3.2.min.js");
+        loadScript("/Scripts/My97DatePicker/WdatePicker.js");
+        loadScript("/Scripts/pager/kkpager.js");
+        loadScript("/Scripts/toast/jquery.toast.min.js");
+    </script>
+
+    <style>
+         .navbar-brand img {
+             float: left;
+         }
+
+        .form-inline {
+            padding: 10px 15px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        if (window == window.parent) {
+            //// 单页面调试
+            //$.getScript("../JScript/layer/layer.js");
+            //$.getScript("../JScript/layer.dialog.js");
+
+        } else {
+            window._closeDialog = window.parent._closeDialog;
+            window.openDialog = window.parent.openDialog;
+            window.clayer = window.parent.clayer;
+            // 加载showLoad和hideLoad函数
+            window.showLoad = window.parent.showLoad;
+            window.hideLoad = window.parent.hideLoad;
+        }
+
+        //限制只能输入数字
+        $.fn.onlyNum = function () {
+            $(this).keypress(function (event) {
+                var eventObj = event || e;
+                var keyCode = eventObj.keyCode || eventObj.which;
+                if ((keyCode >= 48 && keyCode <= 57))
+                    return true;
+                else
+                    return false;
+            }).focus(function () {
+                //禁用输入法
+                this.style.imeMode = 'disabled';
+            }).bind("paste", function () {
+                //获取剪切板的内容
+                var clipboard = window.clipboardData.getData("Text");
+                if (/^\d+$/.test(clipboard))
+                    return true;
+                else
+                    return false;
+            });
+        };
+        $.fn.onlyNumDot = function () {
+            $(this).keypress(function (event) {
+                var eventObj = event || e;
+                var keyCode = eventObj.keyCode || eventObj.which;
+                if ((keyCode >= 48 && keyCode <= 57) || keyCode == 46)
+                    return true;
+                else
+                    return false;
+            }).focus(function () {
+                //禁用输入法
+                this.style.imeMode = 'disabled';
+            }).bind("paste", function () {
+                //获取剪切板的内容
+                var clipboard = window.clipboardData.getData("Text");
+                if (/^\d+(\.\d+)?$/.test(clipboard))
+                    return true;
+                else
+                    return false;
+            });
+        };
+
+        $(function () {
+            // 隐藏所有加载层
+            hideLoad();
+
+            // 限制使用了onlyNum类样式的控件只能输入数字
+            $(".onlyNum").onlyNum();
+            $(".onlyNumDot").onlyNumDot();
+
+            $(".form-inline .form-group .btn").parent().css({ 'float': 'right' });
+        });
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        function getRootUrl() {
+            var rootUrl;
+            rootUrl = '<%= ResolveUrl("~/") %>';
+            return rootUrl;
+        }
+    </script>
+    <form id="form1" runat="server">
+        <div class="hidden">
+             <asp:ContentPlaceHolder ID="Title" runat="server">
+                    </asp:ContentPlaceHolder>
+        </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

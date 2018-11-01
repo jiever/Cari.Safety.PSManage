@@ -1,0 +1,140 @@
+﻿/*!
+ * Bootstrap-custom
+ * 对Bootstrap中某些控件提供自定义样式
+ * 
+ */
+body{ font-size: 12px;}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th{ font-size: 14px;}
+.form-control{ font-size: 12px;}
+.form-group{
+    margin-bottom: 11px;
+}
+
+.form-control{
+    height: 26px;
+    line-height: 1.2;
+    padding: 1px 12px;
+}
+
+.btn{
+    line-height: 1.25;
+    padding: 4px 12px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 4px 8px;
+}
+
+.table{
+    margin-bottom: 10px;
+}
+
+.pagination{
+    margin: 5px 0px;
+}
+
+.input-group-addon {
+    padding: 1px 4px;
+}
+.navbar-default .navbar-brand{ color: #333;font-family: 微软雅黑;}
+/*常用边距============================*/
+.ml5{ margin-left:5px;}
+.ml10{ margin-left:10px;}
+.ml15{ margin-left:15px;}
+.ml20{ margin-left:20px;}
+.ml25{ margin-left:25px;}
+.ml30{ margin-left:30px;}
+
+.mt-1{ margin-top:-1px;}
+.mt5{ margin-top:5px;}
+.mt10{ margin-top:10px;}
+.mt15{ margin-top:15px;}
+.mt20{ margin-top:20px;}
+.mt25{ margin-top:25px;}
+.mt30{ margin-top:30px;}
+
+.mr5{ margin-right:5px;}
+.mr10{ margin-right:10px;}
+.mr15{ margin-right:15px;}
+.mr20{ margin-right:20px;}
+.mr25{ margin-right:25px;}
+.mr30{ margin-right:30px;}
+
+.mb5{ margin-bottom:5px;}
+.mb10{ margin-bottom:10px;}
+.mb15{ margin-bottom:15px;}
+.mb20{ margin-bottom:20px;}
+.mb25{ margin-bottom:25px;}
+.mb30{ margin-bottom:30px;}
+
+.mg5{ margin:5px;}
+.mg10{ margin:10px;}
+.mg15{ margin:15px;}
+.mg20{ margin:20px;}
+.mg25{ margin:25px;}
+.mg30{ margin:30px;}
+
+
+
+/*常用填充==========================*/
+.pt5{ padding-top:5px;}
+.pt10{ padding-top:10px;}
+.pt15{ padding-top:15px;}
+.pt20{ padding-top:20px;}
+.pt25{ padding-top:25px;}
+.pt30{ padding-top:30px;}
+
+.pl5{ padding-left:5px;}
+.pl10{ padding-left:10px;}
+.pl15{ padding-left:15px;}
+.pl20{ padding-left:20px;}
+.pl25{ padding-left:25px;}
+.pl30{ padding-left:30px;}
+
+.pr5{ padding-right:5px;}
+.pr10{ padding-right:10px;}
+.pr15{ padding-right:15px;}
+.pr20{ padding-right:20px;}
+.pr25{ padding-right:25px;}
+.pr30{ padding-right:30px;}
+
+.pb5{ padding-bottom:5px;}
+.pb10{ padding-bottom:10px;}
+.pb15{ padding-bottom:15px;}
+.pb20{ padding-bottom:20px;}
+.pb25{ padding-bottom:25px;}
+.pb30{ padding-bottom:30px;}
+
+.pd5{ padding:5px;}
+.pd10{ padding:10px;}
+.pd15{ padding:15px;}
+.pd20{ padding:20px;}
+.pd25{ padding:25px;}
+.pd30{ padding:30px;}
+.form-inline .form-group { display: inline-block;margin-bottom:10px;vertical-align: middle;margin-right: 20px;}
+.form-inline .form-control{    display: inline-block;width: auto;vertical-align: middle;}
+@media (min-width: 768px){
+.form-inline .form-group { margin-bottom: 10px;}
+
+}
+.table-white-space{white-space:nowrap;}
+.table-white-space tr td,.table-white-space tr th{white-space:nowrap;}
+
+
+.panel-footer{
+            padding: 0;
+            bottom: 0;
+            position: absolute;
+            width: 100%;
+        }
+.pagination {
+            padding-left: 10px;
+            padding-right: 10px;
+            width: auto !important;
+        }
+.pagination>li>span.active{ background: #428bca;border-color: #428bca;color: #fff;}

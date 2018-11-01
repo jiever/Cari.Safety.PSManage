@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-UI", "01-UI", "{501D46E2-D2D2-4B15-8788-7BBD99EF7328}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-InterfaceL", "02-InterfaceL", "{63E971FD-0F89-475B-A7C3-1045D0B86323}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Interface", "01-Interface", "{27276A5D-3051-484C-8574-D09DDAECEBD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-ServiceClient", "02-ServiceClient", "{C832165A-A081-4DE3-AF74-E285E0597730}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-BLL", "04-BLL", "{1C5D42F7-00AA-48AF-B03A-EC259633AD8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{B826DEE5-BEB9-4FA3-A318-8CA01C2982A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DTO", "DTO", "{EFC13C52-5CA8-4D67-BA1E-E8E5D4D57426}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05-DAL", "05-DAL", "{78C25CA3-9D97-44CB-ADF3-BB1F096F1BBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06-Model", "06-Model", "{6D688694-DC00-4342-A04E-2D1627F8C7C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{85B011EB-33FA-478C-8994-639964012647}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CariWeb", "01-UI\CariWeb\CariWeb.csproj", "{F370A466-28E4-462C-B6E0-B94AB9EFE3E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cari.Safety.BLL.PSManage", "04-BLL\BLL\Cari.Safety.BLL.PSManage\Cari.Safety.BLL.PSManage.csproj", "{20A817CD-A104-4D89-9924-93EA003CBF75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F370A466-28E4-462C-B6E0-B94AB9EFE3E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F370A466-28E4-462C-B6E0-B94AB9EFE3E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F370A466-28E4-462C-B6E0-B94AB9EFE3E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F370A466-28E4-462C-B6E0-B94AB9EFE3E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20A817CD-A104-4D89-9924-93EA003CBF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20A817CD-A104-4D89-9924-93EA003CBF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20A817CD-A104-4D89-9924-93EA003CBF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20A817CD-A104-4D89-9924-93EA003CBF75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27276A5D-3051-484C-8574-D09DDAECEBD1} = {63E971FD-0F89-475B-A7C3-1045D0B86323}
+		{C832165A-A081-4DE3-AF74-E285E0597730} = {63E971FD-0F89-475B-A7C3-1045D0B86323}
+		{B826DEE5-BEB9-4FA3-A318-8CA01C2982A9} = {1C5D42F7-00AA-48AF-B03A-EC259633AD8A}
+		{EFC13C52-5CA8-4D67-BA1E-E8E5D4D57426} = {1C5D42F7-00AA-48AF-B03A-EC259633AD8A}
+		{F370A466-28E4-462C-B6E0-B94AB9EFE3E3} = {501D46E2-D2D2-4B15-8788-7BBD99EF7328}
+		{20A817CD-A104-4D89-9924-93EA003CBF75} = {B826DEE5-BEB9-4FA3-A318-8CA01C2982A9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0703E864-99EC-4BD1-BF68-6F0936EDFAB8}
+	EndGlobalSection
+EndGlobal

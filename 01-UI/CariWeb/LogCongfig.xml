@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ArrayOfCongfigData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CongfigData>
+    <Category>AMBLL</Category>
+    <FileName>AMBLL.log</FileName>
+    <RollInterval>None</RollInterval>
+    <RollFileExistsBehavior>Increment</RollFileExistsBehavior>
+    <RollSizeKB>1024</RollSizeKB>
+    <Filter>All</Filter>
+    <DeleteTimeRange>0</DeleteTimeRange>
+    <CompressionFile>false</CompressionFile>
+    <Formatter>{timestamp(local)}: {message}</Formatter>
+  </CongfigData>
+</ArrayOfCongfigData>

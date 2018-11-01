@@ -1,0 +1,167 @@
+﻿.container{
+    width:auto;
+    padding:0 5px;
+}
+
+div.dxtv-ndHov {
+    cursor: default !important;
+}
+
+div.dxtv-ndHov .dxtv-ndImg{
+    cursor: default !important;
+}
+
+td.dxgv{
+    border-bottom: none !important;
+}
+.dxgvControl_Office2010Blue, .dxgvDisabled_Office2010Blue{
+    border: 1px solid #ddd !important;
+}
+
+.dxgvHeader_Office2010Blue{
+    border:1px solid #ddd !important;
+    background:#fff !important;
+}
+.dxgvHeader_Office2010Blue td{
+    padding:4px 8px !important;
+    vertical-align: bottom !important;
+    font-size: 13px !important;
+font-weight: bold !important;
+color: rgb(51, 51, 51) !important;
+    
+}
+
+.dxgvFocusedRow_Office2010Blue{
+    background: #efefef !important;
+}
+
+.dxgvEditFormDisplayRow_Office2010Blue td.dxgv, .dxgvDataRow_Office2010Blue td.dxgv, .dxgvDataRowAlt_Office2010Blue td.dxgv, .dxgvSelectedRow_Office2010Blue td.dxgv, .dxgvFocusedRow_Office2010Blue td.dxgv
+{
+    padding:4px 8px !important;
+    border: 1px solid #ddd !important;
+}
+
+.dxgvControl_Office2010Blue a{
+        color: #337ab7 !important;
+}
+
+span[id^=ASPxLabel]{
+        display: inline-block !important;
+    margin-bottom: 5px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+}
+
+.dxeButtonEdit_Office2010Blue td.dxic, 
+.dxeTextBox_Office2010Blue .dxeEditArea_Office2010Blue,
+dxeMemoEditArea_Office2010Blue,dxeMemoEditAreaSys
+{
+    height:26px !important;
+    line-height: 1.2 !important;
+    padding: 1px 6px !important;
+        border-radius: 4px !important;
+        border: 1px solid #ccc !important;
+}
+.dxeButtonEdit_Office2010Blue,
+.dxeTextBox_Office2010Blue td.dxic,
+.dxeRadioButtonList_Office2010Blue,
+.dxrpControl_Office2010Blue .dxrpLE, .dxrpControl_Office2010Blue .dxrpHLE, .dxrpControlGB_Office2010Blue .dxrpLE, .dxrpControlGB_Office2010Blue .dxrpHLE,
+.dxrpControl_Office2010Blue .dxrpRE, .dxrpControl_Office2010Blue .dxrpHRE, .dxrpControlGB_Office2010Blue .dxrpRE,
+.dxrpControl_Office2010Blue .dxrpTE, .dxrpControl_Office2010Blue .dxrpNHTE, .dxrpControlGB_Office2010Blue .dxrpNHTE,
+.dxrpControl_Office2010Blue .dxrpBE, .dxrpControlGB_Office2010Blue .dxrpBE,
+.dxeTextBox_Office2010Blue, .dxeMemo_Office2010Blue{
+    border:none !important;
+}
+
+.dxeButtonEditButton_Office2010Blue, .dxeButtonEdit_Office2010Blue .dxeSBC{
+    background: none !important;
+    border-left:none !important;
+}
+
+.dxrpControl_Office2010Blue .dxrpTE, .dxrpControl_Office2010Blue .dxrpNHTE, .dxrpControlGB_Office2010Blue .dxrpNHTE,
+.dxrpControl_Office2010Blue .dxrpHLE, .dxrpControl_Office2010Blue .dxrpHRE, .dxrpControl_Office2010Blue .dxrpHeader_Office2010Blue,
+.dxrpControl_Office2010Blue .dxrpRE, .dxrpControl_Office2010Blue .dxrpHRE, .dxrpControlGB_Office2010Blue .dxrpRE,
+.dxrpControl_Office2010Blue .dxrpBE, .dxrpControlGB_Office2010Blue .dxrpBE,
+.dxrpControl_Office2010Blue .dxrpLE, .dxrpControl_Office2010Blue .dxrpHLE, .dxrpControlGB_Office2010Blue .dxrpLE, .dxrpControlGB_Office2010Blue .dxrpHLE,
+.dxrpControl_Office2010Blue .dxrpcontent{
+    background: white !important;
+}
+
+.dxrpControl_Office2010Blue .dxrpHeader_Office2010Blue
+{
+    background: #fcfcfc !important;
+}
+
+.dxeCalendarFooter_Office2010Blue,
+.dxeCalendar_Office2010Blue{
+    background: white !important;
+}
+
+.dxeCalendarDay_Office2010Blue{
+    color:black !important;
+}
+
+.dxeCalendarWeekend_Office2010Blue{
+    color: #FF2F2F !important;
+}
+
+.dxeMemoEditArea_Office2010Blue{
+        border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+}
+
+table {
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+}
+
+.table-form {
+    border: 1px solid #ddd !important;
+}
+
+.table-form>tbody>tr>td, .table-form>tbody>tr>th, .table-form>tfoot>tr>td, .table-form>tfoot>tr>th, .table-form>thead>tr>td, .table-form>thead>tr>th
+{
+        border: 1px solid #ddd !important;
+            line-height: 1.42857143 !important;
+    vertical-align: top !important;
+    border-top: 1px solid #ddd !important;
+    padding: 4px 8px !important;
+}
+
+.dxeErrorCell_Office2010Blue{
+    padding: 2px !important;
+    width: 50px !important;
+    overflow: hidden !important
+}
+
+.dxeDisabled_Office2010Blue, .dxeDisabled_Office2010Blue td.dxe,
+.dxeDisabled_Office2010Blue input, .dxeDisabled_Office2010Blue td.dxe input{
+    background-color:#eee !important;
+}
+
+img[class^=dxWeb_rpHeader],
+img[class^=dxWeb_rpBottom]
+{
+    background: none !important;
+}
+
+.dxbButton_Office2010Blue{
+    border:none !important;
+    background: none !important;
+}
+.dxbButton_Office2010Blue div.dxb{
+    color: #fff !important;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
+    display: inline-block !important;
+    padding: 6px 12px !important;
+    margin-bottom: 0 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    touch-action: manipulation !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    border-radius: 4px !important;
+}

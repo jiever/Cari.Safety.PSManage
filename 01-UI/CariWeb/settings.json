@@ -1,0 +1,350 @@
+{
+  SystemConfig: [
+    {
+      "ConfigItemLabel": "伤亡事故分级",
+      "ConfigItemName": "伤亡事故分级",
+      "ConfigItemRemark": "伤亡事故分级",
+      "ConfigItemParent": null,
+      "Module": "事故管理",
+      "Immutable": 0,
+      "SubSystemID": 0,
+      "SortID": 0
+    },
+
+    {
+      "ConfigItemLabel": "非伤亡事故分级",
+      "ConfigItemName": "非伤亡事故分级",
+      "ConfigItemRemark": null,
+      "ConfigItemParent": null,
+      "Module": "事故管理",
+      "Immutable": 0,
+      "SubSystemID": 0,
+      "SortID": 0
+    },
+
+    {
+      "ConfigItemLabel": "人员身份",
+      "ConfigItemName": "人员身份",
+      "ConfigItemRemark": null,
+      "ConfigItemParent": null,
+      "Module": "事故管理",
+      "Immutable": 0,
+      "SubSystemID": 0,
+      "SortID": 0
+    },
+
+    {
+      "ConfigItemLabel": "伤害性质",
+      "ConfigItemName": "伤害性质",
+      "ConfigItemRemark": "伤害性质",
+      "ConfigItemParent": null,
+      "Module": "事故管理",
+      "Immutable": 0,
+      "SubSystemID": 0,
+      "SortID": 0
+    },
+
+    {
+      "ConfigItemLabel": "伤害程度",
+      "ConfigItemName": "伤害程度",
+      "ConfigItemRemark": null,
+      "ConfigItemParent": null,
+      "Module": "事故管理",
+      "Immutable": 0,
+      "SubSystemID": 0,
+      "SortID": 0
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigItemName": "事故类型",
+      "ConfigItemRemark": "事故类型",
+      "ConfigItemParent": null,
+      "Module": "事故管理",
+      "Immutable": 0,
+      "SubSystemID": 0,
+      "SortID": 0
+    },
+
+    {
+      "ConfigItemLabel": "涉险等级",
+      "ConfigItemName": "涉险等级",
+      "ConfigItemRemark": "涉险等级",
+      "ConfigItemParent": null,
+      "Module": "事故管理",
+      "Immutable": 0,
+      "SubSystemID": 0,
+      "SortID": 0
+    }
+
+
+
+  ],
+  SystemConfigParam: [
+    {
+      "ConfigItemLabel": "非伤亡事故分级",
+      "ConfigParamLabel": "二级（重大）",
+      "ConfigParamName": "二级（重大）",
+      "ConfigParamRemark": "二级（重大）",
+      "IsEffect": 1,
+      "SortID": 2
+    },
+
+    {
+      "ConfigItemLabel": "非伤亡事故分级",
+      "ConfigParamLabel": "三级（一般）",
+      "ConfigParamName": "三级（一般）",
+      "ConfigParamRemark": "三级（一般）",
+      "IsEffect": 1,
+      "SortID": 3
+    },
+
+    {
+      "ConfigItemLabel": "非伤亡事故分级",
+      "ConfigParamLabel": "一级（特大）",
+      "ConfigParamName": "一级（特大）",
+      "ConfigParamRemark": "一级（特大）",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "人员身份",
+      "ConfigParamLabel": "操作人员",
+      "ConfigParamName": "操作人员",
+      "ConfigParamRemark": "操作人员",
+      "IsEffect": 1,
+      "SortID": 2
+    },
+
+    {
+      "ConfigItemLabel": "人员身份",
+      "ConfigParamLabel": "管理人员",
+      "ConfigParamName": "管理人员",
+      "ConfigParamRemark": "管理人员",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "伤害程度",
+      "ConfigParamLabel": "非骨折伤",
+      "ConfigParamName": "非骨折伤",
+      "ConfigParamRemark": "非骨折伤",
+      "IsEffect": 1,
+      "SortID": 4
+    },
+
+    {
+      "ConfigItemLabel": "伤害程度",
+      "ConfigParamLabel": "骨折伤",
+      "ConfigParamName": "骨折伤",
+      "ConfigParamRemark": "骨折伤",
+      "IsEffect": 1,
+      "SortID": 3
+    },
+
+    {
+      "ConfigItemLabel": "伤害程度",
+      "ConfigParamLabel": "死亡",
+      "ConfigParamName": "死亡",
+      "ConfigParamRemark": "死亡",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "伤害程度",
+      "ConfigParamLabel": "重伤",
+      "ConfigParamName": "重伤",
+      "ConfigParamRemark": "重伤",
+      "IsEffect": 1,
+      "SortID": 2
+    },
+
+    {
+      "ConfigItemLabel": "伤害性质",
+      "ConfigParamLabel": "操作责任",
+      "ConfigParamName": "操作责任",
+      "ConfigParamRemark": "操作责任",
+      "IsEffect": 1,
+      "SortID": 2
+    },
+
+    {
+      "ConfigItemLabel": "伤害性质",
+      "ConfigParamLabel": "管理责任",
+      "ConfigParamName": "管理责任",
+      "ConfigParamRemark": "管理责任",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "伤亡事故分级",
+      "ConfigParamLabel": "较大",
+      "ConfigParamName": "较大",
+      "ConfigParamRemark": "较大",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "伤亡事故分级",
+      "ConfigParamLabel": "特大",
+      "ConfigParamName": "特大",
+      "ConfigParamRemark": "特大",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "伤亡事故分级",
+      "ConfigParamLabel": "一般",
+      "ConfigParamName": "一般",
+      "ConfigParamRemark": "一般",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "伤亡事故分级",
+      "ConfigParamLabel": "重大",
+      "ConfigParamName": "重大",
+      "ConfigParamRemark": "重大",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigParamLabel": "顶板",
+      "ConfigParamName": "顶板",
+      "ConfigParamRemark": "顶板",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigParamLabel": "放炮",
+      "ConfigParamName": "放炮",
+      "ConfigParamRemark": "放炮",
+      "IsEffect": 1,
+      "SortID": 5
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigParamLabel": "火灾",
+      "ConfigParamName": "火灾",
+      "ConfigParamRemark": "火灾",
+      "IsEffect": 1,
+      "SortID": 5
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigParamLabel": "机电",
+      "ConfigParamName": "机电",
+      "ConfigParamRemark": "机电",
+      "IsEffect": 1,
+      "SortID": 3
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigParamLabel": "其他",
+      "ConfigParamName": "其他",
+      "ConfigParamRemark": "其他",
+      "IsEffect": 1,
+      "SortID": 6
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigParamLabel": "水灾",
+      "ConfigParamName": "水灾",
+      "ConfigParamRemark": "水灾",
+      "IsEffect": 1,
+      "SortID": 6
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigParamLabel": "瓦斯",
+      "ConfigParamName": "瓦斯",
+      "ConfigParamRemark": "瓦斯",
+      "IsEffect": 1,
+      "SortID": 2
+    },
+
+    {
+      "ConfigItemLabel": "事故类型",
+      "ConfigParamLabel": "运输",
+      "ConfigParamName": "运输",
+      "ConfigParamRemark": "运输",
+      "IsEffect": 1,
+      "SortID": 4
+    },
+
+    {
+      "ConfigItemLabel": "涉险等级",
+      "ConfigParamLabel": "一般",
+      "ConfigParamName": "一般",
+      "ConfigParamRemark": "一般",
+      "IsEffect": 1,
+      "SortID": 1
+    },
+
+    {
+      "ConfigItemLabel": "涉险等级",
+      "ConfigParamLabel": "典型",
+      "ConfigParamName": "典型",
+      "ConfigParamRemark": "典型",
+      "IsEffect": 1,
+      "SortID": 2
+    },
+
+    {
+      "ConfigItemLabel": "涉险等级",
+      "ConfigParamLabel": "较大",
+      "ConfigParamName": "较大",
+      "ConfigParamRemark": "较大",
+      "IsEffect": 1,
+      "SortID": 3
+    },
+
+    {
+      "ConfigItemLabel": "涉险等级",
+      "ConfigParamLabel": "重大",
+      "ConfigParamName": "重大",
+      "ConfigParamRemark": "重大",
+      "IsEffect": 1,
+      "SortID": 4
+    }
+
+
+
+
+  ],
+  moduleConfigs: [
+    {
+      ModuleName: "AM",
+      Key: "carisystem",
+      Value: "server=192.168.152.133;database=CariAM;uid=sa;pwd=pass@word2",
+      Type: 1,
+      Notes: ""
+    },
+
+    {
+      ModuleName: "",
+      Key: "CariAMApi",
+      Value: "192.168.152.133/CariAM",
+      Type: 0,
+      Notes: ""
+    },
+
+
+  ]
+}

@@ -1,0 +1,118 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dialog.master.cs" Inherits="CariWeb.Shared.Dialog" %>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <link rel="icon" href="../../favicon.ico">
+    <title>三汇一矿安全信息化管理系统</title>
+
+    <script src="<%=MainHost %>/api/source/script" type="text/javascript"></script>
+    <script type="text/javascript">
+        loadCss("/Styles/css/bootstrap.min.css");
+        loadCss("/Styles/css/bootstrap-custom.css");
+        loadCss("/Styles/dashboard.css");
+        loadCss("/Styles/validform.css");
+        loadCss("/Scripts/toast/jquery.toast.min.css");
+        loadCss("/Scripts/validform/miniTip.css");
+
+
+        loadScript("/Scripts/jquery-1.9.1.min.js");
+        loadScript("/Scripts/layer/layer.js");
+        loadScript("/Scripts/layer.dialog.js");
+        loadScript("/Scripts/bootstrap.min.js");
+        loadScript("/Scripts/My97DatePicker/WdatePicker.js");
+        loadScript("/Scripts/toast/jquery.toast.min.js");
+
+        loadScript("/Scripts/validform/jquery-validate.js");
+        loadScript("/Scripts/validform/jquery.miniTip.js");
+    </script>
+    <style type="text/css">
+        body{padding-top: 0}
+        .invalid {
+            border: 1px solid red;
+        }
+        .mycontainer {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <script>
+        function getRootUrl() {
+            var rootUrl;
+            rootUrl = '<%= ResolveUrl("~/") %>';
+            return rootUrl;
+        }
+    </script>
+    <div class="mycontainer">
+    <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1"></asp:ContentPlaceHolder>
+    </div>
+  </form>
+    <script type="text/javascript">
+        if (window == window.parent) {
+
+        } else {
+            window._closeDialog = window.parent._closeDialog;
+            window.openDialog = window.parent.openDialog;
+            window.clayer = window.parent.clayer;
+        }
+        //限制只能输入数字
+        $.fn.onlyNum = function () {
+            $(this).keypress(function (event) {
+                var eventObj = event || e;
+                var keyCode = eventObj.keyCode || eventObj.which;
+                if ((keyCode >= 48 && keyCode <= 57))
+                    return true;
+                else
+                    return false;
+            }).focus(function () {
+                //禁用输入法
+                this.style.imeMode = 'disabled';
+            }).bind("paste", function () {
+                //获取剪切板的内容
+                var clipboard = window.clipboardData.getData("Text");
+                if (/^\d+$/.test(clipboard))
+                    return true;
+                else
+                    return false;
+            });
+        };
+        $.fn.onlyNumDot = function () {
+            $(this).keypress(function (event) {
+                var eventObj = event || e;
+                var keyCode = eventObj.keyCode || eventObj.which;
+                if ((keyCode >= 48 && keyCode <= 57) || keyCode == 46)
+                    return true;
+                else
+                    return false;
+            }).focus(function () {
+                //禁用输入法
+                this.style.imeMode = 'disabled';
+            }).bind("paste", function () {
+                //获取剪切板的内容
+                var clipboard = window.clipboardData.getData("Text");
+                if (/^\d+(\.\d+)?$/.test(clipboard))
+                    return true;
+                else
+                    return false;
+            });
+        };
+        $(function () {
+            // 限制使用了onlyNum类样式的控件只能输入数字
+            $(".onlyNum").onlyNum();
+            $(".onlyNumDot").onlyNumDot();
+        });
+    </script>
+
+</body>
+</html>

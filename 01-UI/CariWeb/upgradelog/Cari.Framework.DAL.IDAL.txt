@@ -1,0 +1,7 @@
+﻿=================== Release 1.0.0.2 2016-1-25 =====================
+Improvement
+•add custom get method to get Repository and SQLHelper
+
+=================== Release 1.0.0.4 2018-3-23 =====================
+Bugfix
+•bugfix dbcontext not release

@@ -1,0 +1,32 @@
+﻿/*对话框字体*/
+.ui-dialog .ui-dialog-content
+{
+    padding: 0; 
+}
+.ui-dialog .ui-dialog-title
+{
+    font-size: 13px;
+}
+
+ .maskload {
+     position:absolute; 
+     z-index:998; 
+     top:0px; 
+     left:0px;
+     background:#323232;
+     background:rgba(50,50,50,0.2);
+     display:none;
+     width: 100%;
+     height: 100%;
+     text-align: center;
+ }
+
+.load 
+ {
+     position:absolute;  
+     z-index:999; 
+     padding:10px; 
+     background:#fff; 
+     display:none;
+ }
+ 

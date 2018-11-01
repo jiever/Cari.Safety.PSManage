@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Basic Demo</title>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../miniTip.css" />
+</head>
+<body>
+    <header class="container">
+        <h1>Basic Demo</h1>
+    </header>
+    <div class="container">
+
+        <form id="form">
+            <input type="text" name="name" id="name" data-required class="form-control" data-description="age" />
+
+            <label for="name" class="add-on"><span class="icon-asterisk"></span> Name</label>
+
+            <div class="control-group input-append">
+                <input type="text" name="nickname" id="nickname" class="form-control" data-required="true" data-pattern="email" />
+                <label for="nickname" class="add-on"><span class="icon-asterisk"></span> Nickname</label>
+            </div>
+            <div class="control-group input-append">
+                <input type="text" name="site" id="site" class="form-control" />
+                <label for="site" class="add-on">Site</label>
+            </div>
+            <div class="control-group input-append">
+                <input type="text" name="age" id="age" class="form-control" data-pattern="^[0-9]+$" />
+                <label for="age" class="add-on"><span class="icon-asterisk"></span> Age</label>
+            </div>
+            <div class="control-group input-append">
+                <input type="radio" name="tradio" data-required value="0" /> 显示
+                <input type="radio" name="tradio" data-required value="1" /> 隐藏
+            </div>
+            <input type="text" id="novalid" name="novalid" data-required class="form-control" />
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">Send</button>
+                <button type="reset" class="btn">Reset</button>
+            </div>
+        </form>
+    </div>
+    <script src="vendor/jquery-1.9.0.min.js"></script>
+    <script src="../jquery-validate.js"></script>
+    <script src="../jquery.miniTip.js"></script>
+    <script>
+        $('form').validate({
+            onKeyup: true,
+            eachValidField: function () {
+
+            },
+            eachInvalidField: function () {
+
+            },
+            description: {
+                age: {
+                    required: '22222222222222',
+                    pattern: '<div class="alert alert-error">Pattern</div>',
+                    conditional: '<div class="alert alert-error">Conditional</div>',
+                    valid: '<div class="alert alert-success">Valid</div>'
+                }
+            }
+        });
+
+        $("input[name='tradio']").click(function () {
+            if (this.value == '1') {
+                $("#novalid").data("required", 'false');
+            } else {
+                $("#novalid").data("required", "true");
+            }
+        })
+    </script>
+</body>
+</html>

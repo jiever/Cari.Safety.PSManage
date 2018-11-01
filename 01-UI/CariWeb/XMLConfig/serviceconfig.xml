@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.net 
+         http://www.springframework.net/xsd/spring-objects.xsd">
+  <object id="Repository" type="Cari.Safety.PermissionUpdate.NewRepository,Cari.Safety.PermissionUpdate" />
+  <object id="RepositoryContext" type="Cari.Framework.DAL.ORM.EntityFrameworkRepositoryContext`1[[Cari.Safety.DAL.AM.ConfigContext.CariSystemDbContext,Cari.Safety.DAL.AM.ConfigContext]],Cari.Framework.DAL.ORM" singleton="false"/>
+  <object id="SQLHelper" type="Cari.Framework.DAL.SQL.SQLServerHelper.SqlHelper, Cari.Framework.DAL.SQL"/>
+
+  <object id="MQConsume" type="Cari.Framework.Utility.ActiveMQ.ConsumeWarpper,Cari.Framework.Utility.ActiveMQ" lazy-init="true" singleton="true"/>
+  <object id="MQProduce" type="Cari.Framework.Utility.ActiveMQ.ProduceWarpper,Cari.Framework.Utility.ActiveMQ" lazy-init="true" singleton="true"/>
+</objects>
