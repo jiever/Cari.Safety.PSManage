@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20A817CD-A104-4D89-9924-93EA003CBF75}</ProjectGuid>
+    <ProjectGuid>{BB8889A5-37C2-404D-A832-385B29536ED5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cari.Safety.BLL.PSManage</RootNamespace>
-    <AssemblyName>Cari.Safety.BLL.PSManage</AssemblyName>
+    <RootNamespace>Cari.Safety.DTO.PSManage</RootNamespace>
+    <AssemblyName>Cari.Safety.DTO.PSManage</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,14 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RequestToApi.cs" />
+    <Compile Include="ApiResponseDto.cs" />
+    <Compile Include="HtcQueryDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\DTO\Cari.Safety.DTO.PSManage\Cari.Safety.DTO.PSManage.csproj">
-      <Project>{BB8889A5-37C2-404D-A832-385B29536ED5}</Project>
-      <Name>Cari.Safety.DTO.PSManage</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,12 +5,13 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Cari.Safety.DTO.PSManage;
 
 namespace Cari.Safety.BLL.PSManage
 {
     public static class RequestToApi
     {
-        public static string Get(string url,out string statusCode)
+        public static ApiResponseDto Get(string url)
         {
             if (!url.StartsWith("http"))
             {
@@ -19,16 +20,16 @@ namespace Cari.Safety.BLL.PSManage
             HttpClient myHttpClient = new HttpClient();
             HttpResponseMessage response = myHttpClient.GetAsync(url).Result;
             string result = "";
-            statusCode = response.StatusCode.ToString();
+            var statusCode = response.StatusCode.ToString();
             if (response.IsSuccessStatusCode)
             {
                 result = response.Content.ReadAsStringAsync().Result;
             }
 
-            return result;
+            return new ApiResponseDto(){StatusCode = statusCode, Content = result};
         }
 
-        public static string Post(string url, string postData, out string statusCode)
+        public static ApiResponseDto Post(string url, string postData)
         {
             string result = "";
             if (!url.StartsWith("http"))
@@ -39,13 +40,13 @@ namespace Cari.Safety.BLL.PSManage
             HttpContent httpContent = new StringContent(postData);
             HttpResponseMessage response = myHttpClient.PostAsync(url, httpContent).Result;
 
-            statusCode = response.StatusCode.ToString();
+            var statusCode = response.StatusCode.ToString();
             if (response.IsSuccessStatusCode)
             {
-                return result = response.Content.ReadAsStringAsync().Result;
+                result = response.Content.ReadAsStringAsync().Result;
             }
 
-            return result;
+            return new ApiResponseDto(){ StatusCode = statusCode, Content = result };
         }
     }
 }

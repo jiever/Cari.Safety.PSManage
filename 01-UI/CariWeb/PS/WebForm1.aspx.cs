@@ -12,9 +12,8 @@ namespace CariWeb.PS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var statusCode = "";
             var url = "http://47.98.157.173:8010/api/order/getorders";
-            var s = RequestToApi.Get(url, out statusCode);
+            var s = RequestToApi.Get(url);
         }
     }
 }
