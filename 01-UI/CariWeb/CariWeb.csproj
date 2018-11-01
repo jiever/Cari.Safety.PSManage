@@ -271,8 +271,10 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="LogCongfig.xml" />
+    <Content Include="PS\HtcCorrentionDetialForm.aspx" />
     <Content Include="PS\HtcRecordMainForm.aspx" />
     <Content Include="PS\WebForm1.aspx" />
+    <Content Include="PS\WebForm2.aspx" />
     <Content Include="readme.txt" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -1836,6 +1838,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PS\HtcCorrentionDetialForm.aspx.cs">
+      <DependentUpon>HtcCorrentionDetialForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\HtcCorrentionDetialForm.aspx.designer.cs">
+      <DependentUpon>HtcCorrentionDetialForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PS\HtcRecordMainForm.aspx.cs">
       <DependentUpon>HtcRecordMainForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1849,6 +1858,13 @@
     </Compile>
     <Compile Include="PS\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Shared\Dialog.Master.cs">
       <DependentUpon>Dialog.Master</DependentUpon>

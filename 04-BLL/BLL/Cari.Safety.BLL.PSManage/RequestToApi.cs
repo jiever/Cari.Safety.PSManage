@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Cari.Safety.DTO.PSManage;
@@ -38,6 +39,9 @@ namespace Cari.Safety.BLL.PSManage
             }
             HttpClient myHttpClient = new HttpClient();
             HttpContent httpContent = new StringContent(postData);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            httpContent.Headers.ContentType.CharSet = "utf-8";
+
             HttpResponseMessage response = myHttpClient.PostAsync(url, httpContent).Result;
 
             var statusCode = response.StatusCode.ToString();

@@ -9,8 +9,23 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <link rel="icon" href="../../favicon.ico">
     <title>三汇一矿安全信息化管理系统</title>
+    <link href="../Styles/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Styles/css/bootstrap-custom.css" rel="stylesheet" type="text/css"/>
+    <link href="../Styles/dashboard.css" rel="stylesheet" type="text/css"/>
+    <link href="../Styles/validform.css" rel="stylesheet" type="text/css"/>
+    <link href="../Scripts/toast/jquery.toast.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Scripts/validform/miniTip.css" rel="stylesheet" type="text/css"/>
+    
+    <script src="../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/layer/layer.js" type="text/javascript"></script>
+    <script src="../Scripts/layer.dialog.js" type="text/javascript"></script>
+    <script src="../Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="../Scripts/toast/jquery.toast.min.js" type="text/javascript"></script>
+    <script src="../Scripts/validform/jquery-validate.js" type="text/javascript"></script>
+    <script src="../Scripts/validform/jquery.miniTip.js" type="text/javascript"></script>
 
-    <script src="<%=MainHost %>/api/source/script" type="text/javascript"></script>
+   <%-- <script src="<%=MainHost %>/api/source/script" type="text/javascript"></script>
     <script type="text/javascript">
         loadCss("/Styles/css/bootstrap.min.css");
         loadCss("/Styles/css/bootstrap-custom.css");
@@ -29,7 +44,7 @@
 
         loadScript("/Scripts/validform/jquery-validate.js");
         loadScript("/Scripts/validform/jquery.miniTip.js");
-    </script>
+    </script>--%>
     <style type="text/css">
         body{padding-top: 0}
         .invalid {

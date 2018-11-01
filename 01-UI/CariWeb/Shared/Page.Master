@@ -10,17 +10,33 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <link rel="icon" href="../../favicon.ico">
     <title>开发框架统一模板</title>
+    <link href="../Styles/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../Styles/css/bootstrap-custom.css" rel="stylesheet" type="text/css"/>
+    <link href="../Styles/dashboard.css" rel="stylesheet" type="text/css"/>
+    <link href="../Scripts/pager/kkpager_blue.css" rel="stylesheet" type="text/css"/>
+    <link href="../Scripts/toast/jquery.toast.min.css" rel="stylesheet" type="text/css"/>
+    
 
-    <script src="<%=MainHost %>/api/source/script" type="text/javascript"></script>
-    <script type="text/javascript">
+    <%--<script src="<%=MainHost %>/api/source/script" type="text/javascript"></script>--%>
+   <%-- <script type="text/javascript">
         loadCss("/Styles/css/bootstrap.min.css");
         loadCss("/Styles/css/bootstrap-custom.css");
         loadCss("/Styles/dashboard.css");
         loadCss("/Styles/validform.css");
         loadCss("/Scripts/pager/kkpager_blue.css");
         loadCss("/Scripts/toast/jquery.toast.min.css");
-    </script>
-    <script type="text/javascript">
+    </script>--%>
+    <script src="../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/layer/layer.js" type="text/javascript"></script>
+    <script src="../Scripts/layer.dialog.js" type="text/javascript"></script>
+    <script src="../Scripts/autoheight.js" type="text/javascript"></script>
+    <script src="../Scripts/ajax.request.js" type="text/javascript"></script>
+    <script src="../Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../Scripts/validform/validform_5.3.2.min.js" type="text/javascript"></script>
+    <script src="../Scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="../Scripts/pager/kkpager.js" type="text/javascript"></script>
+    <script src="../Scripts/toast/jquery.toast.min.js" type="text/javascript"></script>
+   <%-- <script type="text/javascript">
         loadScript("/Scripts/jquery-1.9.1.min.js");
         loadScript("/Scripts/layer/layer.js");
         loadScript("/Scripts/layer.dialog.js");
@@ -31,7 +47,7 @@
         loadScript("/Scripts/My97DatePicker/WdatePicker.js");
         loadScript("/Scripts/pager/kkpager.js");
         loadScript("/Scripts/toast/jquery.toast.min.js");
-    </script>
+    </script>--%>
 
     <style>
          .navbar-brand img {
