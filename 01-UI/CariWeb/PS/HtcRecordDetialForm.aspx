@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Dialog.Master" AutoEventWireup="true" CodeBehind="HtcCorrentionDetialForm.aspx.cs" Inherits="CariWeb.PS.HtcCorrentionDetialForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Dialog.Master" AutoEventWireup="true" CodeBehind="HtcRecordDetialForm.aspx.cs" Inherits="CariWeb.PS.HtcCorrentionDetialForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

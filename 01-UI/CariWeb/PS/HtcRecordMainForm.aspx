@@ -116,7 +116,7 @@
                 data[item.name] = item.value;
             });
             openDialog({
-                url: '<%=ResolveUrl("~/PS/HtcCorrentionDetialForm.aspx")%>?',
+                url: '<%=ResolveUrl("~/PS/HtcRecordDetialForm.aspx")%>?',
                 title: "详情",
                 height: 450,
                 width: 700

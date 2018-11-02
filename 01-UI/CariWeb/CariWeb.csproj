@@ -271,10 +271,17 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="LogCongfig.xml" />
-    <Content Include="PS\HtcCorrentionDetialForm.aspx" />
+    <Content Include="PS\AmRecordDetailForm.aspx" />
+    <Content Include="PS\AmRecordMainForm.aspx" />
+    <Content Include="PS\HtcRecordDetialForm.aspx" />
     <Content Include="PS\HtcRecordMainForm.aspx" />
+    <Content Include="PS\NoSafetyActionMainForm.aspx" />
+    <Content Include="PS\RiskAssessMainForm.aspx" />
+    <Content Include="PS\RiskLevelMainForm.aspx" />
+    <Content Include="PS\RiskRangeMainForm.aspx" />
     <Content Include="PS\WebForm1.aspx" />
     <Content Include="PS\WebForm2.aspx" />
+    <Content Include="PS\YearRecognitionMainFrom.aspx" />
     <Content Include="readme.txt" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -1838,12 +1845,26 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PS\HtcCorrentionDetialForm.aspx.cs">
-      <DependentUpon>HtcCorrentionDetialForm.aspx</DependentUpon>
+    <Compile Include="PS\AmRecordDetailForm.aspx.cs">
+      <DependentUpon>AmRecordDetailForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PS\HtcCorrentionDetialForm.aspx.designer.cs">
-      <DependentUpon>HtcCorrentionDetialForm.aspx</DependentUpon>
+    <Compile Include="PS\AmRecordDetailForm.aspx.designer.cs">
+      <DependentUpon>AmRecordDetailForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\AmRecordMainForm.aspx.cs">
+      <DependentUpon>AmRecordMainForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\AmRecordMainForm.aspx.designer.cs">
+      <DependentUpon>AmRecordMainForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\HtcRecordDetialForm.aspx.cs">
+      <DependentUpon>HtcRecordDetialForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\HtcRecordDetialForm.aspx.designer.cs">
+      <DependentUpon>HtcRecordDetialForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="PS\HtcRecordMainForm.aspx.cs">
       <DependentUpon>HtcRecordMainForm.aspx</DependentUpon>
@@ -1851,6 +1872,34 @@
     </Compile>
     <Compile Include="PS\HtcRecordMainForm.aspx.designer.cs">
       <DependentUpon>HtcRecordMainForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\NoSafetyActionMainForm.aspx.cs">
+      <DependentUpon>NoSafetyActionMainForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\NoSafetyActionMainForm.aspx.designer.cs">
+      <DependentUpon>NoSafetyActionMainForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\RiskAssessMainForm.aspx.cs">
+      <DependentUpon>RiskAssessMainForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\RiskAssessMainForm.aspx.designer.cs">
+      <DependentUpon>RiskAssessMainForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\RiskLevelMainForm.aspx.cs">
+      <DependentUpon>RiskLevelMainForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\RiskLevelMainForm.aspx.designer.cs">
+      <DependentUpon>RiskLevelMainForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\RiskRangeMainForm.aspx.cs">
+      <DependentUpon>RiskRangeMainForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\RiskRangeMainForm.aspx.designer.cs">
+      <DependentUpon>RiskRangeMainForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="PS\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -1865,6 +1914,13 @@
     </Compile>
     <Compile Include="PS\WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\YearRecognitionMainFrom.aspx.cs">
+      <DependentUpon>YearRecognitionMainFrom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\YearRecognitionMainFrom.aspx.designer.cs">
+      <DependentUpon>YearRecognitionMainFrom.aspx</DependentUpon>
     </Compile>
     <Compile Include="Shared\Dialog.Master.cs">
       <DependentUpon>Dialog.Master</DependentUpon>
