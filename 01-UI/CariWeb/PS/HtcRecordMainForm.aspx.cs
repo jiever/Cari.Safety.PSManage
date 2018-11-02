@@ -43,28 +43,30 @@ namespace CariWeb.PS
 
         private void LoadData()
         {
-            int count = 0;
             int pagesize = 10;
             var pageIndex = Cari.Safety.Utility.Utils.GetInt(this.PageIndex.Value, 1);
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddentroubleByCusInfos";
-            var data = new HtcQueryDto()
+            var postData = new 
             {
                 key = _key,
                 strStart = _Start.Text,
                 strEnd = _End.Text,
                 arrCatagories = _Major.Text,
-                arrCheckType = _CheckType.Text
+                arrCheckType = _CheckType.Text,
+                nPageIndex = pageIndex,
+                nPageSize = pagesize
             };
 
-            var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(data));
+            var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(postData));
             if (responseDto.StatusCode == "OK")
             {
-                var list = JsonConvert.DeserializeObject(responseDto.Content);
+                var content = JsonConvert.DeserializeObject<HtcDataResult>(responseDto.Content);
+                var list = content.oVhtDetailBoth.OrderBy(x => x.YHJB).ThenByDescending(x=>x.JCSJ).ToList();
                 
                 _Repeater.DataSource = list;
                 _Repeater.DataBind();
+                PageTotal.Value = content.nTotal.ToString();
             }
-
         }
 
         protected void _RequestButton_Click(object sender, EventArgs e)

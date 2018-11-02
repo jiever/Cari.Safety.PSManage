@@ -12,7 +12,7 @@
         </thead>
         <asp:Repeater runat="server" ID="_Repeater">
             <ItemTemplate>
-                <tr>
+                <tr style="background: <%#Eval("Color")%>">
                     <td><%#Eval("ID")%></td>
                     <td><%#Eval("Name")%></td>
                     <td>

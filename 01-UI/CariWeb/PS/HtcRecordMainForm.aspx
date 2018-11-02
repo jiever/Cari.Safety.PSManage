@@ -58,7 +58,7 @@
             </thead>
             <asp:Repeater runat="server" ID="_Repeater">
                 <ItemTemplate>
-                    <tr>
+                    <tr style='background: <%#Eval("Color")%>'>
                         <td><%#Eval("JCR")%></td>
                         <td><%#Eval("JCSJ")%></td>
                         <td><%#Eval("JCLX")%></td>
