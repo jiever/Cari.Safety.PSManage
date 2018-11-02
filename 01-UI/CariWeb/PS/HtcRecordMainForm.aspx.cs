@@ -49,7 +49,7 @@ namespace CariWeb.PS
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddentroubleByCusInfos";
             var data = new HtcQueryDto()
             {
-                Key = _key,
+                key = _key,
                 strStart = _Start.Text,
                 strEnd = _End.Text,
                 arrCatagories = _Major.Text,

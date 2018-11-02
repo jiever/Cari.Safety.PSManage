@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Cari.Safety.DTO.PSManage
 {
-    public class HtcQueryDto
+    public class AmQueryDto
     {
         public string key { get; set; }
         public string strStart { get; set; }
         public string strEnd { get; set; }
-        public string arrCatagories { get; set; }
-        public string arrCheckType { get; set; }
+        public string arrDepts { get; set; }
+        public string arrLevel { get; set; }
     }
 }
