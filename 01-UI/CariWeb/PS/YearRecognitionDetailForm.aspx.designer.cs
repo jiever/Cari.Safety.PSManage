@@ -10,69 +10,96 @@
 namespace CariWeb.PS {
     
     
-    public partial class NoSafetyActionMainForm {
+    public partial class YearRecognitionDetailForm {
         
         /// <summary>
-        /// _Mine 控件。
+        /// FXDD 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList _Mine;
+        protected global::System.Web.UI.WebControls.Label FXDD;
         
         /// <summary>
-        /// _Start 控件。
+        /// FXMS 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _Start;
+        protected global::System.Web.UI.WebControls.Label FXMS;
         
         /// <summary>
-        /// _End 控件。
+        /// FXLX 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _End;
+        protected global::System.Web.UI.WebControls.Label FXLX;
         
         /// <summary>
-        /// _RequestButton 控件。
+        /// GKCS 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _RequestButton;
+        protected global::System.Web.UI.WebControls.Label GKCS;
         
         /// <summary>
-        /// _Repeater 控件。
+        /// FZR 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater _Repeater;
+        protected global::System.Web.UI.WebControls.Label FZR;
         
         /// <summary>
-        /// PageIndex 控件。
+        /// JGR 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PageIndex;
+        protected global::System.Web.UI.WebControls.Label JGR;
         
         /// <summary>
-        /// PageTotal 控件。
+        /// JKZQ 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PageTotal;
+        protected global::System.Web.UI.WebControls.Label JKZQ;
+        
+        /// <summary>
+        /// ZT 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ZT;
+        
+        /// <summary>
+        /// ZHLX 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ZHLX;
+        
+        /// <summary>
+        /// KNDZSG 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label KNDZSG;
     }
 }

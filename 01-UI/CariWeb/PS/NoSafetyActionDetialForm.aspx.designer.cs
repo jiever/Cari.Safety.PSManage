@@ -10,69 +10,87 @@
 namespace CariWeb.PS {
     
     
-    public partial class NoSafetyActionMainForm {
+    public partial class NoSafetyActionDetialForm {
         
         /// <summary>
-        /// _Mine 控件。
+        /// XM 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList _Mine;
+        protected global::System.Web.UI.WebControls.Label XM;
         
         /// <summary>
-        /// _Start 控件。
+        /// ZW 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _Start;
+        protected global::System.Web.UI.WebControls.Label ZW;
         
         /// <summary>
-        /// _End 控件。
+        /// DW 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _End;
+        protected global::System.Web.UI.WebControls.Label DW;
         
         /// <summary>
-        /// _RequestButton 控件。
+        /// FKYY 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _RequestButton;
+        protected global::System.Web.UI.WebControls.Label FKYY;
         
         /// <summary>
-        /// _Repeater 控件。
+        /// FKDW 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater _Repeater;
+        protected global::System.Web.UI.WebControls.Label FKDW;
         
         /// <summary>
-        /// PageIndex 控件。
+        /// FKJE 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PageIndex;
+        protected global::System.Web.UI.WebControls.Label FKJE;
         
         /// <summary>
-        /// PageTotal 控件。
+        /// FKSJ 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField PageTotal;
+        protected global::System.Web.UI.WebControls.Label FKSJ;
+        
+        /// <summary>
+        /// JBR 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label JBR;
+        
+        /// <summary>
+        /// SFTZ 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SFTZ;
     }
 }

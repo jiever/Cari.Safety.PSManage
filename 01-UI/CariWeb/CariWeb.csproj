@@ -18,7 +18,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
@@ -271,6 +271,8 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="LogCongfig.xml" />
+    <Content Include="PS\NoSafetyActionDetialForm.aspx" />
+    <Content Include="PS\YearRecognitionDetailForm.aspx" />
     <Content Include="PS\AmRecordDetailForm.aspx" />
     <Content Include="PS\AmRecordMainForm.aspx" />
     <Content Include="PS\HtcRecordDetialForm.aspx" />
@@ -1845,6 +1847,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PS\NoSafetyActionDetialForm.aspx.cs">
+      <DependentUpon>NoSafetyActionDetialForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\NoSafetyActionDetialForm.aspx.designer.cs">
+      <DependentUpon>NoSafetyActionDetialForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PS\YearRecognitionDetailForm.aspx.cs">
+      <DependentUpon>YearRecognitionDetailForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\YearRecognitionDetailForm.aspx.designer.cs">
+      <DependentUpon>YearRecognitionDetailForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PS\AmRecordDetailForm.aspx.cs">
       <DependentUpon>AmRecordDetailForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1970,7 +1986,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>24125</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/PSManage</IISUrl>
+          <IISUrl>http://localhost:24125/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
