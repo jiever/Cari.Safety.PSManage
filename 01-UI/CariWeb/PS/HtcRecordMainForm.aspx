@@ -19,7 +19,7 @@
         })
     </script>
     <div class="form-inline pd10 clearfix" id="MainColumn">
-        <div class="form-group">
+        <div class="form-group" style='<%=_type?"":"display:none"%>'>
             <label class="control-label">矿名：</label>
             <asp:DropDownList runat="server" ID="_Mine" CssClass="form-control" Width="120px" DataTextField="Text" DataValueField="Value"/>
         </div>
