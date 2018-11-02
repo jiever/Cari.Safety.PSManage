@@ -1,15 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Page.Master" AutoEventWireup="true" CodeBehind="HtcRecordMainForm.aspx.cs" Inherits="CariWeb.PS.HtcRecordMainForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+    <link href="../Scripts/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
+    <script src="../Scripts/bootstrap-multiselect.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        $(function() {
+            $('.multi-select').multiselect({
+                includeSelectAllOption: true,
+                selectAllText: '全部',
+                nonSelectedText: '-- 请选择 --',
+                numberDisplayed: 2,
+                nSelectedText: '项已选',
+                allSelectedText: '全选',
+                onChange: function () {
+                }
+            });
+        })
+    </script>
     <div class="form-inline pd10 clearfix" id="MainColumn">
         <div class="form-group">
+            <label class="control-label">矿名：</label>
+            <asp:DropDownList runat="server" ID="_Mine" CssClass="form-control" Width="120px" DataTextField="Text" DataValueField="Value"/>
+        </div>
+        <div class="form-group">
             <label class="control-label">检查类型：</label>
-            <asp:DropDownList runat="server" ID="_CheckType" CssClass="form-control" Width="120px"/>
+            <asp:ListBox runat="server" ID="_CheckType" DataTextField="Text" DataValueField="Value" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
         </div>
         <div class="form-group">
             <label class="control-label">所属专业：</label>
-            <asp:DropDownList runat="server" ID="_Major" CssClass="form-control" Width="120px"/>
+            <asp:ListBox runat="server" ID="_Major" DataTextField="Text" DataValueField="Value" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
         </div>
         <div class="form-group">
             <label class="control-label">时间：</label>

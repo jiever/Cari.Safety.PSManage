@@ -13,13 +13,22 @@ namespace CariWeb.PS {
     public partial class HtcRecordMainForm {
         
         /// <summary>
+        /// _Mine 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList _Mine;
+        
+        /// <summary>
         /// _CheckType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList _CheckType;
+        protected global::System.Web.UI.WebControls.ListBox _CheckType;
         
         /// <summary>
         /// _Major 控件。
@@ -28,7 +37,7 @@ namespace CariWeb.PS {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList _Major;
+        protected global::System.Web.UI.WebControls.ListBox _Major;
         
         /// <summary>
         /// _Start 控件。
