@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionDto.cs" />
     <Compile Include="AmDto.cs" />
     <Compile Include="ApiResponseDto.cs" />
     <Compile Include="AssessDto.cs" />

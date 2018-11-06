@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Page.Master" AutoEventWireup="true" CodeBehind="NoSafetyActionMainForm.aspx.cs" Inherits="CariWeb.PS.NoSafetyActionMainForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+    <%--不安全行为页面--%>
     <link href="../Scripts/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
     <script src="../Scripts/bootstrap-multiselect.js" type="text/javascript"></script>
 </asp:Content>
@@ -46,7 +47,7 @@
                         <td><%#Eval("BAQXWMS")%></td>
                         <td><%#Eval("CLYJ")%></td>
                         <td>
-                            <input type="hidden" name="lstFine" value="<%# Newtonsoft.Json.JsonConvert.SerializeObject( Eval("lstFine"))%>"/>
+                            <input type="hidden" name="StrFines" value="<%# Newtonsoft.Json.JsonConvert.SerializeObject( Eval("StrFines"))%>"/>
                             <a class="glyphicon glyphicon-edit" onclick="openDetail(this)">扣罚款情况</a>
                         </td>
                     </tr>
@@ -64,7 +65,7 @@
             kkpager.generPageHtml({
                 pno: $("#<%=PageIndex.ClientID%>").val(),
                 mode: 'click',
-                total: parseInt($("#<%=PageTotal.ClientID%>").val()) / 20 + ((parseInt($("#<%=PageTotal.ClientID%>").val()) % 20) == 0 ? 0 : 1),
+                total: parseInt($("#<%=PageTotal.ClientID%>").val()) / 10 + ((parseInt($("#<%=PageTotal.ClientID%>").val()) % 10) == 0 ? 0 : 1),
                 totalRecords: $("#<%=PageTotal.ClientID%>").val(),
                 click: function (n) {
                     $("#<%=PageIndex.ClientID%>").val(n);
@@ -74,13 +75,14 @@
             kkpager.selectPage($("#<%=PageIndex.ClientID%>").val());
         });
         
-        var data=new Object();
+        var koDataP = new Array();
 
         function openDetail(obj) {
             var hids = $(obj).closest("td");
-            hids.find("input[type='hidden']").each(function(index, item) {
-                data[item.name] = item.value;
-            });
+            var childStr = hids.find("input[name='StrFines']").val();
+            var jobect = JSON.parse(childStr);
+            GetKOData(jobect);
+
             openDialog({
                 url: '<%=ResolveUrl("~/PS/NoSafetyActionDetialForm.aspx")%>?',
                 title: "扣罚款情况详情",
@@ -92,8 +94,9 @@
 
         }
        
-        function GetObj() {
-            return data;
+        function GetKOData(str) {
+            koDataP = eval(str);
+            return koDataP;
         }
     </script>
 </asp:Content>
