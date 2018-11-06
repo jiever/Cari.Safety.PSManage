@@ -66,21 +66,33 @@ namespace CariWeb.PS
             //var url = "http://47.98.157.173:8010/api/order/getorders";
             //var s = RequestToApi.Get(url);
 
+            
 
             var url1 = "http://47.98.157.173:8010/api/order/getOrdersByPost";
             var data = new Dto()
             {
-                ID = null,
-                Name = ""
+                ID =string.IsNullOrWhiteSpace(_Fruit.SelectedValue)?(int?)null: Int32.Parse(_Fruit.SelectedValue),
+                Name = string.IsNullOrWhiteSpace(_Fruit.SelectedValue) ? "":_Fruit.SelectedItem.Text
             };
             var ss = RequestToApi.Post(url1, JsonConvert.SerializeObject(data));
             if (ss.StatusCode == "OK")
             {
                 var list = JsonConvert.DeserializeObject<List<Dto>>(ss.Content);
                 list.ForEach(x=>x.Childs  = JsonConvert.SerializeObject(ss.Content));
+                if (!IsPostBack)
+                {
+                    _Fruit.DataSource = list;
+                    _Fruit.DataBind();
+                }
+
                 _Repeater.DataSource = list;
                 _Repeater.DataBind();
             }
+        }
+
+        protected void _RequestButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 

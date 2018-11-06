@@ -2,6 +2,32 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="../Scripts/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
+    <script src="../Scripts/bootstrap-multiselect.js" type="text/javascript"></script>
+    <script>
+        $(function() {
+            $('.multi-select').multiselect({
+                includeSelectAllOption: true,
+                selectAllText: '全部',
+                nonSelectedText: '-- 请选择 --',
+                numberDisplayed: 2,
+                nSelectedText: '项已选',
+                allSelectedText: '全选',
+                onChange: function () {
+                }
+            });
+        })
+    </script>
+    <div class="form-inline pd10 clearfix" id="MainColumn">
+        <div class="form-group">
+            <label class="control-label">Select：</label>
+            <asp:ListBox runat="server" ID="_Fruit" DataTextField="Name" DataValueField="ID" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
+        </div>
+        <div style="text-align: right; float: right;">
+            <asp:Button runat="server" ID="_RequestButton" Text="查询" OnClick="_RequestButton_Click"
+                        class="btn btn-primary" data-loading-text="正在查询" />
+        </div>
+    </div>
     <table class="table table-bordered table-hover">
         <thead>
         <tr>
