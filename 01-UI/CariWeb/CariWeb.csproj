@@ -1806,6 +1806,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="PS\WebForm3.aspx" />
     <Content Include="XMLConfig\serviceconfig.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1951,6 +1952,13 @@
     </Compile>
     <Compile Include="Shared\Page.Master.designer.cs">
       <DependentUpon>Page.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PS\WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PS\WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

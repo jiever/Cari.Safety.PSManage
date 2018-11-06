@@ -18,7 +18,9 @@
                     <td>
                         <input name="id" type="hidden" value="<%#Eval("ID")%>"/>
                         <input name="name" type="hidden" value="<%#Eval("Name")%>"/>
+                        <input name="childs" type="hidden" value='<%#Eval("Childs")%>'/>
                         <a href="javascript:void(0)" class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
+                        <a href="javascript:void(0)" class="glyphicon glyphicon-edit" onclick="openKO(this)">ko</a>
                     </td>
                 </tr>
             </ItemTemplate>
@@ -27,6 +29,7 @@
     <script>
 
         var data=new Object();
+        var koDataP = new Array();
 
         function openDetail(obj) {
             var hids = $(obj).closest("td");
@@ -41,11 +44,32 @@
             }, function () {
                
             });
-
         }
-       
+      
+        function openKO(obj) {
+            debugger 
+            var hids = $(obj).closest("td");
+            var childStr = hids.find("input[name='childs']").val();
+            var jobect = JSON.parse(childStr);
+            GetKOData(jobect);
+
+            openDialog({
+                url: '<%=ResolveUrl("~/PS/WebForm3.aspx")%>?',
+                title: "ko详情",
+                height: 450,
+                width: 700
+            }, function () {
+               
+            });
+        }
+
         function GetObj() {
             return data;
+        }
+
+        function GetKOData(str) {
+            koDataP = eval(str);
+            return koDataP;
         }
     </script>
 </asp:Content>

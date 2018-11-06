@@ -56,6 +56,9 @@
             margin-right: 0px;
             margin-left: 0px;
         }
+        label {
+            font-weight: 400 !important;
+        }
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>

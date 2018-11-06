@@ -77,6 +77,7 @@ namespace CariWeb.PS
             if (ss.StatusCode == "OK")
             {
                 var list = JsonConvert.DeserializeObject<List<Dto>>(ss.Content);
+                list.ForEach(x=>x.Childs  = JsonConvert.SerializeObject(ss.Content));
                 _Repeater.DataSource = list;
                 _Repeater.DataBind();
             }
@@ -113,5 +114,7 @@ namespace CariWeb.PS
                 return Col;
             }
         }
+
+        public string Childs { get; set; }
     }
 }
