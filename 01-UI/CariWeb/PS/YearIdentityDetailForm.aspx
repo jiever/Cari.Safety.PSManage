@@ -27,7 +27,7 @@
                         <td>
                             <label class="control-label" data-bind="text:ZYLX"></label>
                         </td>
-                        <td class="form-detail">管控措施</td>
+                        <td class="form-detail" colspan="3">管控措施</td>
                         <td>
                             <label class="control-label" data-bind="text:GKCS"></label>
                         </td>

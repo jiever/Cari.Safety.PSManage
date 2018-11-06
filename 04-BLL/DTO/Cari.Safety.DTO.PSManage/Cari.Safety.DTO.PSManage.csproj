@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AmDto.cs" />
     <Compile Include="ApiResponseDto.cs" />
+    <Compile Include="AssessDto.cs" />
     <Compile Include="CoalKeyDto.cs" />
     <Compile Include="HtcDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
