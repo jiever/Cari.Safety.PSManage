@@ -65,9 +65,10 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(data));
             if (responseDto.StatusCode == "OK")
             {
-                var list = JsonConvert.DeserializeObject(responseDto.Content);
+                var content = JsonConvert.DeserializeObject<YearIdentityDtoResult>(responseDto.Content);
+                content.oYearIdentityModels.ForEach(x=>x.StrLstYearIdentityRisks = JsonConvert.SerializeObject(x.LstYearIdentityRisks)); 
 
-                _Repeater.DataSource = list;
+                _Repeater.DataSource = content.oYearIdentityModels;
                 _Repeater.DataBind();
             }
 

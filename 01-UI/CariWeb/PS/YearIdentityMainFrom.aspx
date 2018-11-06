@@ -41,7 +41,7 @@
                         <td><%#Eval("JLR")%></td>
                         <td><%#Eval("BZ")%></td>
                         <td>
-                            <input type="hidden" name="XQList" value="<%#Eval("LstYearIdentityRisks")%>" />
+                            <input type="hidden" name="XQList" value="<%#Eval("StrLstYearIdentityRisks")%>" />
                             <a class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
                         </td>
                     </tr>
@@ -68,14 +68,15 @@
             });
             kkpager.selectPage($("#<%=PageIndex.ClientID%>").val());
         });
-
-        var data = new Object();
+        
+        var koDataP = new Array();
 
         function openDetail(obj) {
             var hids = $(obj).closest("td");
-            hids.find("input[type='hidden']").each(function (index, item) {
-                data[item.name] = item.value;
-            });
+            var childStr = hids.find("input[name='XQList']").val();
+            var jobect = JSON.parse(childStr);
+            GetKOData(jobect);
+
             openDialog({
                 url: '<%=ResolveUrl("~/PS/YearIdentityDetailForm.aspx")%>?',
                 title: "详情",
@@ -86,9 +87,9 @@
             });
 
         }
-
-        function GetObj() {
-            return data;
+        function GetKOData(str) {
+            koDataP = eval(str);
+            return koDataP;
         }
     </script>
 </asp:Content>

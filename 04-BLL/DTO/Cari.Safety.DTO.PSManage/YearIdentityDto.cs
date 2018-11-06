@@ -17,6 +17,7 @@ namespace Cari.Safety.DTO.PSManage
         public string HYNR { get; set; }
         public string BZ { get; set; }
         public List<Risks> LstYearIdentityRisks { get; set; }
+        public string StrLstYearIdentityRisks { get; set; }
     }
 
     public class Risks
