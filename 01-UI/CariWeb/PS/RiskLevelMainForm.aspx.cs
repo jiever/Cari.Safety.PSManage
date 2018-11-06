@@ -59,7 +59,7 @@ namespace CariWeb.PS
             var pageIndex = Cari.Safety.Utility.Utils.GetInt(this.PageIndex.Value, 1);
             var key = _type ? _Mine.SelectedValue : _key;
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/Risk/GetRiskLevel?key={key}";
-            
+
             var responseDto = RequestToApi.Get(url);
             if (responseDto.StatusCode == "OK")
             {
@@ -78,8 +78,9 @@ namespace CariWeb.PS
                     var model = new { Name = name, Min = min, Max = max };
                     list.Add(model);
                 }
-                _Repeater.DataSource = list;
+                _Repeater.DataSource = list.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
                 _Repeater.DataBind();
+                PageTotal.Value = list.Count.ToString();
             }
 
         }

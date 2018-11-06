@@ -45,7 +45,7 @@
             kkpager.generPageHtml({
                 pno: $("#<%=PageIndex.ClientID%>").val(),
                 mode: 'click',
-                total: parseInt($("#<%=PageTotal.ClientID%>").val()) / 20 + ((parseInt($("#<%=PageTotal.ClientID%>").val()) % 20) == 0 ? 0 : 1),
+                total: parseInt($("#<%=PageTotal.ClientID%>").val()) / 10 + ((parseInt($("#<%=PageTotal.ClientID%>").val()) % 10) == 0 ? 0 : 1),
                 totalRecords: $("#<%=PageTotal.ClientID%>").val(),
                 click: function (n) {
                     $("#<%=PageIndex.ClientID%>").val(n);

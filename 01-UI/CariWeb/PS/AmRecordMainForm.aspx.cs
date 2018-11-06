@@ -70,10 +70,11 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(data));
             if (responseDto.StatusCode == "OK")
             {
-                var list = JsonConvert.DeserializeObject(responseDto.Content);
+                var content = JsonConvert.DeserializeObject<AmDtoResult>(responseDto.Content);
 
-                _Repeater.DataSource = list;
+                _Repeater.DataSource = content.OAccidentModels;
                 _Repeater.DataBind();
+                PageTotal.Value = content.nTotal.ToString();
             }
         }
 

@@ -66,12 +66,12 @@ namespace CariWeb.PS
             if (responseDto.StatusCode == "OK")
             {
                 var content = JsonConvert.DeserializeObject<YearIdentityDtoResult>(responseDto.Content);
-                content.oYearIdentityModels.ForEach(x=>x.StrLstYearIdentityRisks = JsonConvert.SerializeObject(x.LstYearIdentityRisks)); 
-
-                _Repeater.DataSource = content.oYearIdentityModels;
+                content.oYearIdentityModels.ForEach(x => x.StrLstYearIdentityRisks = JsonConvert.SerializeObject(x.LstYearIdentityRisks));
+                var list = content.oYearIdentityModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
+                _Repeater.DataSource = list;
                 _Repeater.DataBind();
+                PageTotal.Value = content.nTotal.ToString();
             }
-
         }
 
         protected void _RequestButton_Click(object sender, EventArgs e)
