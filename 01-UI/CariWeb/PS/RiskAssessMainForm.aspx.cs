@@ -49,6 +49,22 @@ namespace CariWeb.PS
                     _Mine.Items.Insert(0, new ListItem() { Text = "所有矿井", Value = "" });
                 }
             }
+            var fxlx = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetDictionary?type=风险类型");
+            if (fxlx.StatusCode == "OK")
+            {
+                var data = JsonConvert.DeserializeObject<List<DictionaryDto>>(fxlx.Content);
+                _FXLX.DataSource = data;
+                _FXLX.DataBind();
+                _FXLX.Items.Insert(0, new ListItem() { Text = "", Value = "" });
+            }
+            var zylx = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetDictionary?type=专业类型");
+            if (zylx.StatusCode == "OK")
+            {
+                var data = JsonConvert.DeserializeObject<List<DictionaryDto>>(zylx.Content);
+                _ZYLX.DataSource = data;
+                _ZYLX.DataBind();
+                _ZYLX.Items.Insert(0, new ListItem() { Text = "", Value = "" });
+            }
         }
 
         private void LoadData()

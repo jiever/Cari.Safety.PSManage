@@ -25,11 +25,11 @@
         </div>
         <div class="form-group">
             <label class="control-label">检查类型：</label>
-            <asp:ListBox runat="server" ID="_CheckType" DataTextField="Text" DataValueField="Value" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
+            <asp:ListBox runat="server" ID="_CheckType" DataTextField="DataName" DataValueField="DataName" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
         </div>
         <div class="form-group">
             <label class="control-label">所属专业：</label>
-            <asp:ListBox runat="server" ID="_Major" DataTextField="Text" DataValueField="Value" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
+            <asp:ListBox runat="server" ID="_Major" DataTextField="DataName" DataValueField="DataName" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
         </div>
         <div class="form-group">
             <label class="control-label">时间：</label>

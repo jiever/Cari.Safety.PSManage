@@ -45,6 +45,7 @@
     <Compile Include="ApiResponseDto.cs" />
     <Compile Include="AssessDto.cs" />
     <Compile Include="CoalKeyDto.cs" />
+    <Compile Include="DictionaryDto.cs" />
     <Compile Include="HtcDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RiskRangeDto.cs" />
