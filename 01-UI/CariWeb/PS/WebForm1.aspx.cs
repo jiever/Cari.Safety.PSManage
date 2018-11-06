@@ -14,6 +14,38 @@ namespace CariWeb.PS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var score = new
+            {
+                F1 = "低风险",
+                F2 = "一般风险",
+                F3 = "较大风险",
+                F4 ="重大风险",
+                F1Score1 = 3,
+                F2Score1 = 3,
+                F2Score2 = 7,
+                F3Score1 = 9,
+                F3Score2 = 18,
+                F4Score2 = 15,
+            };
+
+            var scire = JsonConvert.SerializeObject(score);
+            List<object> listS = new List<object>();
+
+            var jobject = JObject.Parse(scire);
+            var tokens = jobject.Values().Select(x => x.Path).ToList();
+
+            var risknames = tokens.Where(x => !x.Contains("Score")).ToList();
+            foreach (var item in risknames)
+            {
+                var name = jobject[item].ToString(); // 风险级别等级
+                var min = jobject[item + "Score1"]; // 下限
+                var max = jobject[item + "Score2"]; // 上限
+
+                var model = new { Name = name, Min = min, Max = max };
+                listS.Add(model);
+            }
+
+
             var json = new
             {
                 nTotal=2,

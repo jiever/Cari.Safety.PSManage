@@ -18,7 +18,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
@@ -272,7 +272,7 @@
     <Content Include="Default.aspx" />
     <Content Include="LogCongfig.xml" />
     <Content Include="PS\NoSafetyActionDetialForm.aspx" />
-    <Content Include="PS\YearRecognitionDetailForm.aspx" />
+    <Content Include="PS\YearIdentityDetailForm.aspx" />
     <Content Include="PS\AmRecordDetailForm.aspx" />
     <Content Include="PS\AmRecordMainForm.aspx" />
     <Content Include="PS\HtcRecordDetialForm.aspx" />
@@ -283,7 +283,7 @@
     <Content Include="PS\RiskRangeMainForm.aspx" />
     <Content Include="PS\WebForm1.aspx" />
     <Content Include="PS\WebForm2.aspx" />
-    <Content Include="PS\YearRecognitionMainFrom.aspx" />
+    <Content Include="PS\YearIdentityMainFrom.aspx" />
     <Content Include="readme.txt" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -1854,12 +1854,12 @@
     <Compile Include="PS\NoSafetyActionDetialForm.aspx.designer.cs">
       <DependentUpon>NoSafetyActionDetialForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PS\YearRecognitionDetailForm.aspx.cs">
-      <DependentUpon>YearRecognitionDetailForm.aspx</DependentUpon>
+    <Compile Include="PS\YearIdentityDetailForm.aspx.cs">
+      <DependentUpon>YearIdentityDetailForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PS\YearRecognitionDetailForm.aspx.designer.cs">
-      <DependentUpon>YearRecognitionDetailForm.aspx</DependentUpon>
+    <Compile Include="PS\YearIdentityDetailForm.aspx.designer.cs">
+      <DependentUpon>YearIdentityDetailForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="PS\AmRecordDetailForm.aspx.cs">
       <DependentUpon>AmRecordDetailForm.aspx</DependentUpon>
@@ -1931,12 +1931,12 @@
     <Compile Include="PS\WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PS\YearRecognitionMainFrom.aspx.cs">
-      <DependentUpon>YearRecognitionMainFrom.aspx</DependentUpon>
+    <Compile Include="PS\YearIdentityMainFrom.aspx.cs">
+      <DependentUpon>YearIdentityMainFrom.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PS\YearRecognitionMainFrom.aspx.designer.cs">
-      <DependentUpon>YearRecognitionMainFrom.aspx</DependentUpon>
+    <Compile Include="PS\YearIdentityMainFrom.aspx.designer.cs">
+      <DependentUpon>YearIdentityMainFrom.aspx</DependentUpon>
     </Compile>
     <Compile Include="Shared\Dialog.Master.cs">
       <DependentUpon>Dialog.Master</DependentUpon>

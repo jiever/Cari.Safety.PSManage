@@ -29,16 +29,29 @@ namespace CariWeb.PS
                 _key = Request.QueryString["key"];
             }
 
+
+
             if (!IsPostBack)
             {
-                InitData();
+                InitData(_type);
             }
             LoadData();
         }
 
-        private void InitData()
+        private void InitData(bool type)
         {
-            
+            if (type)
+            {
+                var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=";
+                var responseDto = RequestToApi.Get(url);
+                if (responseDto.StatusCode == "OK")
+                {
+                    var data = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
+                    _Mine.DataSource = data;
+                    _Mine.DataBind();
+                    _Mine.Items.Insert(0, new ListItem(){Text = "所有矿井", Value = ""});
+                }
+            }
         }
 
         private void LoadData()
@@ -48,7 +61,7 @@ namespace CariWeb.PS
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddentroubleByCusInfos";
             var postData = new 
             {
-                key = _key,
+                key = _type? _Mine.SelectedValue : _key,//_type 为true 综合页面
                 strStart = _Start.Text,
                 strEnd = _End.Text,
                 arrCatagories = _Major.Text,
@@ -60,7 +73,7 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(postData));
             if (responseDto.StatusCode == "OK")
             {
-                var content = JsonConvert.DeserializeObject<HtcDataResult>(responseDto.Content);
+                var content = JsonConvert.DeserializeObject<HtcDtoResult>(responseDto.Content);
                 var list = content.oVhtDetailBoth.OrderBy(x => x.YHJB).ThenByDescending(x=>x.JCSJ).ToList();
                 
                 _Repeater.DataSource = list;

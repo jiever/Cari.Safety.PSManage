@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Safety.DTO.PSManage;
 
 namespace CariWeb.PS
 {
@@ -30,14 +31,25 @@ namespace CariWeb.PS
 
             if (!IsPostBack)
             {
-                InitData();
+                InitData(_type);
             }
             LoadData();
         }
 
-        private void InitData()
+        private void InitData(bool type)
         {
-
+            if (type)
+            {
+                var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=";
+                var responseDto = RequestToApi.Get(url);
+                if (responseDto.StatusCode == "OK")
+                {
+                    var data = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
+                    _Mine.DataSource = data;
+                    _Mine.DataBind();
+                    _Mine.Items.Insert(0, new ListItem() { Text = "所有矿井", Value = "" });
+                }
+            }
         }
 
         private void LoadData()
@@ -45,13 +57,10 @@ namespace CariWeb.PS
             int count = 0;
             int pagesize = 10;
             var pageIndex = Cari.Safety.Utility.Utils.GetInt(this.PageIndex.Value, 1);
-            var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddentroubleByCusInfos";
-            var data = new 
-            {
-                Key = _key,
-            };
-
-            var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(data));
+            var key = _type ? _Mine.SelectedValue : _key;
+            var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/Risk/GetRiskLevel?key={key}";
+            
+            var responseDto = RequestToApi.Get(url);
             if (responseDto.StatusCode == "OK")
             {
                 List<object> list = new List<object>();
@@ -66,7 +75,7 @@ namespace CariWeb.PS
                     var min = jobject[item + "Score1"]; // 下限
                     var max = jobject[item + "Score2"]; // 上限
 
-                    var model = new { name = name, min = min, max = max };
+                    var model = new { Name = name, Min = min, Max = max };
                     list.Add(model);
                 }
                 _Repeater.DataSource = list;

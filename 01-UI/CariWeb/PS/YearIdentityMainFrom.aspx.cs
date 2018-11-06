@@ -7,10 +7,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Safety.DTO.PSManage;
 
 namespace CariWeb.PS
 {
-    public partial class YearRecognitionMainFrom : System.Web.UI.Page
+    public partial class YearIdentityMainFrom : System.Web.UI.Page
     {
         private string _key = "";
         protected bool _type = false;
@@ -29,13 +30,24 @@ namespace CariWeb.PS
 
             if (!IsPostBack)
             {
-                InitData();
+                InitData(_type);
             }
             LoadData();
         }
-        private void InitData()
+        private void InitData(bool type)
         {
-
+            if (type)
+            {
+                var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=";
+                var responseDto = RequestToApi.Get(url);
+                if (responseDto.StatusCode == "OK")
+                {
+                    var data = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
+                    _Mine.DataSource = data;
+                    _Mine.DataBind();
+                    _Mine.Items.Insert(0, new ListItem() { Text = "所有矿井", Value = "" });
+                }
+            }
         }
 
         private void LoadData()
@@ -43,10 +55,10 @@ namespace CariWeb.PS
             int count = 0;
             int pagesize = 10;
             var pageIndex = Cari.Safety.Utility.Utils.GetInt(this.PageIndex.Value, 1);
-            var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddentroubleByCusInfos";
+            var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/Risk/GetYearIdentityByCusInfos";
             var data = new 
             {
-                Key = _key,                
+                Key = _type ? _Mine.SelectedValue : _key,//_type 为true 综合页面
                 arrYear =_Year.Text
             };
 

@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Page.Master" AutoEventWireup="true" CodeBehind="RiskLevelMainForm.aspx.cs" Inherits="CariWeb.PS.RiskLevelMainForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+    <%--风险等级信息--%>
     <link href="../Scripts/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
     <script src="../Scripts/bootstrap-multiselect.js" type="text/javascript"></script>
 </asp:Content>

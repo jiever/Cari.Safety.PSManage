@@ -10,7 +10,7 @@
 namespace CariWeb.PS {
     
     
-    public partial class YearRecognitionMainFrom {
+    public partial class YearIdentityMainFrom {
         
         /// <summary>
         /// _Mine 控件。

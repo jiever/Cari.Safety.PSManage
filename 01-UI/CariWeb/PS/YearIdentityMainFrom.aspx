@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Page.Master" AutoEventWireup="true" CodeBehind="YearRecognitionMainFrom.aspx.cs" Inherits="CariWeb.PS.YearRecognitionMainFrom" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Page.Master" AutoEventWireup="true" CodeBehind="YearIdentityMainFrom.aspx.cs" Inherits="CariWeb.PS.YearIdentityMainFrom" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+   <%-- 年度辨识管理--%>
     <link href="../Scripts/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/bootstrap-multiselect.js" type="text/javascript"></script>
 </asp:Content>
@@ -76,7 +77,7 @@
                 data[item.name] = item.value;
             });
             openDialog({
-                url: '<%=ResolveUrl("~/PS/YearRecognitionDetailForm.aspx")%>?',
+                url: '<%=ResolveUrl("~/PS/YearIdentityDetailForm.aspx")%>?',
                 title: "详情",
                 height: 450,
                 width: 700

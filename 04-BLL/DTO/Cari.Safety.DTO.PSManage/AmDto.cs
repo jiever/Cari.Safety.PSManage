@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cari.Safety.DTO.PSManage
 {
-    public class AmData
+    public class AmDto
     {
         public string SGZRBM { get; set; }
         public string SGFSDD { get; set; }
@@ -23,9 +23,9 @@ namespace Cari.Safety.DTO.PSManage
         public string SSBW { get; set; }
     }
 
-    public class AmDataResult
+    public class AmDtoResult
     {
         public int nTotal { get; set; }
-        public List<AmData> OAccidentModels { get; set; }
+        public List<AmDto> OAccidentModels { get; set; }
     }
 }

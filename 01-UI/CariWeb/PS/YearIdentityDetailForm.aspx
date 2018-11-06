@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Dialog.Master" AutoEventWireup="true" CodeBehind="YearRecognitionDetailForm.aspx.cs" Inherits="CariWeb.PS.YearRecognitionDetailForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Dialog.Master" AutoEventWireup="true" CodeBehind="YearIdentityDetailForm.aspx.cs" Inherits="CariWeb.PS.YearRecognitionDetailForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

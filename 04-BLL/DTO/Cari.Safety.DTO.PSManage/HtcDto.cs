@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cari.Safety.DTO.PSManage
 {
-    public class HtcData
+    public class HtcDto
     {
         private string Col;
         public string JCR { get; set; }
@@ -46,9 +46,9 @@ namespace Cari.Safety.DTO.PSManage
         }
     }
 
-    public class HtcDataResult
+    public class HtcDtoResult
     {
         public int nTotal { get; set; }
-        public List<HtcData> oVhtDetailBoth { get; set; }
+        public List<HtcDto> oVhtDetailBoth { get; set; }
     }
 }

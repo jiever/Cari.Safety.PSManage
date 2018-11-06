@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Cari.Safety.BLL.PSManage;
+using Cari.Safety.DTO.PSManage;
 using Newtonsoft.Json;
 
 namespace CariWeb.PS
@@ -29,29 +30,42 @@ namespace CariWeb.PS
 
             if (!IsPostBack)
             {
-                InitData();
+                InitData(_type);
             }
             LoadData();
         }
 
-        private void InitData()
+        private void InitData(bool type)
         {
-            
+            if (type)
+            {
+                var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=";
+                var responseDto = RequestToApi.Get(url);
+                if (responseDto.StatusCode == "OK")
+                {
+                    var data = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
+                    _Mine.DataSource = data;
+                    _Mine.DataBind();
+                    _Mine.Items.Insert(0, new ListItem() { Text = "所有矿井", Value = "" });
+                }
+            }
         }
 
         private void LoadData()
         {
-            int count = 0;
             int pagesize = 10;
             var pageIndex = Cari.Safety.Utility.Utils.GetInt(this.PageIndex.Value, 1);
-            var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/Risk/GetRiskRange?key={_key}";
+
+            var key = _type ? _Mine.SelectedValue : _key;
+            var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/Risk/GetRiskRange?key={key}";
             var responseDto = RequestToApi.Get(url);
             if (responseDto.StatusCode == "OK")
             {
-                var list = JsonConvert.DeserializeObject(responseDto.Content);
-
+                var content = JsonConvert.DeserializeObject<RiskRangeDtoResult>(responseDto.Content);
+                var list = content.oRiskRangeModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
                 _Repeater.DataSource = list;
                 _Repeater.DataBind();
+                PageTotal.Value = content.nTotal.ToString();
             }
         }
 
