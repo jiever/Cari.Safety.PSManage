@@ -66,21 +66,24 @@ namespace CariWeb.PS
                 List<object> list = new List<object>();
 
                 var jobject = JObject.Parse(responseDto.Content);
-                var tokens = jobject.Values().Select(x => x.Path).ToList();
-
-                var risknames = tokens.Where(x => !x.Contains("Score")).ToList();
-                foreach (var item in risknames)
+                if (jobject != null)
                 {
-                    var name = jobject[item].ToString(); // 风险级别等级
-                    var min = jobject[item + "Score1"]; // 下限
-                    var max = jobject[item + "Score2"]; // 上限
+                    var tokens = jobject.Values().Select(x => x.Path).ToList();
 
-                    var model = new { Name = name, Min = min, Max = max };
-                    list.Add(model);
+                    var risknames = tokens.Where(x => !x.Contains("Score")).ToList();
+                    foreach (var item in risknames)
+                    {
+                        var name = jobject[item].ToString(); // 风险级别等级
+                        var min = jobject[item + "Score1"]; // 下限
+                        var max = jobject[item + "Score2"]; // 上限
+
+                        var model = new { Name = name, Min = min, Max = max };
+                        list.Add(model);
+                    }
+                    _Repeater.DataSource = list.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
+                    _Repeater.DataBind();
+                    PageTotal.Value = list.Count.ToString();
                 }
-                _Repeater.DataSource = list.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
-                _Repeater.DataBind();
-                PageTotal.Value = list.Count.ToString();
             }
 
         }

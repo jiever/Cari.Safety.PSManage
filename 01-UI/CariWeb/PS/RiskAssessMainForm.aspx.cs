@@ -87,10 +87,13 @@ namespace CariWeb.PS
             if (responseDto.StatusCode == "OK")
             {
                 var content = JsonConvert.DeserializeObject<AssessDtoResult>(responseDto.Content);
-
-                _Repeater.DataSource = content.oRiskAssessmentModels;
-                _Repeater.DataBind();
-                PageTotal.Value = content.nTotal.ToString();
+                if (content.oRiskAssessmentModels != null)
+                {
+                    _Repeater.DataSource = content.oRiskAssessmentModels;
+                    _Repeater.DataBind();
+                    PageTotal.Value = content.nTotal.ToString();
+                }
+                
             }
         }
 

@@ -67,10 +67,14 @@ namespace CariWeb.PS
             {
                 var content = JsonConvert.DeserializeObject<YearIdentityDtoResult>(responseDto.Content);
                 content.oYearIdentityModels.ForEach(x => x.StrLstYearIdentityRisks = JsonConvert.SerializeObject(x.LstYearIdentityRisks));
-                var list = content.oYearIdentityModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
-                _Repeater.DataSource = list;
-                _Repeater.DataBind();
-                PageTotal.Value = content.nTotal.ToString();
+                if (content.oYearIdentityModels != null)
+                {
+                    var list = content.oYearIdentityModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
+                    _Repeater.DataSource = list;
+                    _Repeater.DataBind();
+                    PageTotal.Value = content.nTotal.ToString();
+                }
+                
             }
         }
 

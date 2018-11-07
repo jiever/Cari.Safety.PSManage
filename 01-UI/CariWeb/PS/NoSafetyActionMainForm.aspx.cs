@@ -71,10 +71,13 @@ namespace CariWeb.PS
             {
                 var content = JsonConvert.DeserializeObject<ActionDtoResult>(responseDto.Content);
                 var list = content.oThreeViolationModels;
-                list.ForEach(x=>x.StrFines = JsonConvert.SerializeObject(x.lstFine));
-                _Repeater.DataSource = list;
-                _Repeater.DataBind();
-                PageTotal.Value = content.nTotal.ToString();
+                if (list != null)
+                {
+                    list.ForEach(x => x.StrFines = JsonConvert.SerializeObject(x.lstFine));
+                    _Repeater.DataSource = list;
+                    _Repeater.DataBind();
+                    PageTotal.Value = content.nTotal.ToString();
+                }
             }
 
         }

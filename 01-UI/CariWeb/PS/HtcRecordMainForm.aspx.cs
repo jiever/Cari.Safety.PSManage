@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Framework.Utility;
 using Cari.Safety.BLL.PSManage;
 using Cari.Safety.DTO.PSManage;
 using Newtonsoft.Json;
@@ -75,7 +76,7 @@ namespace CariWeb.PS
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddentroubleByCusInfos";
             var postData = new 
             {
-                key = _type? "" : _key,//_type 为true 综合页面
+                key = _type? _Mine.SelectedValue : _key,//_type 为true 综合页面
                 strStart = _Start.Text,
                 strEnd = _End.Text,
                 arrCatagories = _Major.Text,
@@ -88,11 +89,15 @@ namespace CariWeb.PS
             if (responseDto.StatusCode == "OK")
             {
                 var content = JsonConvert.DeserializeObject<HtcDtoResult>(responseDto.Content);
-                var list = content.oVhtDetailBoth.OrderBy(x => x.YHJB).ThenByDescending(x=>x.JCSJ).ToList();
+                if (content.oVhtDetailBoth != null)
+                {
+                    var list = content.oVhtDetailBoth.OrderBy(x => x.YHJB).ThenByDescending(x => x.JCSJ).ToList();
+
+                    _Repeater.DataSource = list;
+                    _Repeater.DataBind();
+                    PageTotal.Value = content.nTotal.ToString();
+                }
                 
-                _Repeater.DataSource = list;
-                _Repeater.DataBind();
-                PageTotal.Value = content.nTotal.ToString();
             }
         }
 

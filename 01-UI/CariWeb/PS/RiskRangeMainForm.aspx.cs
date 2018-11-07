@@ -62,10 +62,14 @@ namespace CariWeb.PS
             if (responseDto.StatusCode == "OK")
             {
                 var content = JsonConvert.DeserializeObject<RiskRangeDtoResult>(responseDto.Content);
-                var list = content.oRiskRangeModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
-                _Repeater.DataSource = list;
-                _Repeater.DataBind();
-                PageTotal.Value = content.nTotal.ToString();
+                if (content.oRiskRangeModels != null)
+                {
+                    var list = content.oRiskRangeModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
+                    _Repeater.DataSource = list;
+                    _Repeater.DataBind();
+                    PageTotal.Value = content.nTotal.ToString();
+                }
+                
             }
         }
 
