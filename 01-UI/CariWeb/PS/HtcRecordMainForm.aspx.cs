@@ -58,7 +58,6 @@ namespace CariWeb.PS
                 var data = JsonConvert.DeserializeObject<List<DictionaryDto>>(jclx.Content);
                 _CheckType.DataSource = data;
                 _CheckType.DataBind();
-                _CheckType.Items.Insert(0, new ListItem() { Text = "", Value = "" });
             }
             var sszy = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetDictionary?type=专业类型");
             if (sszy.StatusCode == "OK")
@@ -66,7 +65,6 @@ namespace CariWeb.PS
                 var data = JsonConvert.DeserializeObject<List<DictionaryDto>>(sszy.Content);
                 _Major.DataSource = data;
                 _Major.DataBind();
-                _Major.Items.Insert(0, new ListItem() { Text = "", Value = "" });
             }
         }
 
@@ -77,7 +75,7 @@ namespace CariWeb.PS
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddentroubleByCusInfos";
             var postData = new 
             {
-                key = _type? _Mine.SelectedValue : _key,//_type 为true 综合页面
+                key = _type? "" : _key,//_type 为true 综合页面
                 strStart = _Start.Text,
                 strEnd = _End.Text,
                 arrCatagories = _Major.Text,

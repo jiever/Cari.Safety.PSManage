@@ -12,8 +12,14 @@ namespace CariWeb.PS
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        protected bool _type = false;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //区分综合页面
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["type"]))
+            {
+                _type = true;
+            }
             var score = new
             {
                 F1 = "低风险",
@@ -81,6 +87,14 @@ namespace CariWeb.PS
                 list.ForEach(x=>x.Childs  = JsonConvert.SerializeObject(ss.Content));
                 if (!IsPostBack)
                 {
+                    if (_type)
+                    {
+                       
+                            _Mine.DataSource = list;
+                            _Mine.DataBind();
+                            _Mine.Items.Insert(0, new ListItem() { Text = "所有矿井", Value = "" });
+                        
+                    }
                     _Fruit.DataSource = list;
                     _Fruit.DataBind();
                 }

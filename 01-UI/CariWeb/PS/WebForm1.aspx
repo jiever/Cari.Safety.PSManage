@@ -19,6 +19,10 @@
         })
     </script>
     <div class="form-inline pd10 clearfix" id="MainColumn">
+        <div class="form-group" style='<%=_type?"":"display:none"%>'>
+            <label class="control-label">矿名：</label>
+            <asp:DropDownList runat="server" ID="_Mine" CssClass="form-control" Width="120px" DataTextField="Name" DataValueField="ID"/>
+        </div>
         <div class="form-group">
             <label class="control-label">Select：</label>
             <asp:ListBox runat="server" ID="_Fruit" DataTextField="Name" DataValueField="ID" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
