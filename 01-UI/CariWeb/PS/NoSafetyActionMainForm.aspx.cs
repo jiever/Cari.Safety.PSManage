@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Framework.Utility;
 using Cari.Safety.DTO.PSManage;
 
 namespace CariWeb.PS
@@ -69,15 +70,23 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(data));
             if (responseDto.StatusCode == "OK")
             {
-                var content = JsonConvert.DeserializeObject<ActionDtoResult>(responseDto.Content);
-                var list = content.oThreeViolationModels;
-                if (list != null)
+                if (responseDto.Content != null)
                 {
-                    list.ForEach(x => x.StrFines = JsonConvert.SerializeObject(x.lstFine));
-                    _Repeater.DataSource = list;
-                    _Repeater.DataBind();
-                    PageTotal.Value = content.nTotal.ToString();
+                    var content = JsonConvert.DeserializeObject<ActionDtoResult>(responseDto.Content);
+                    var list = content.oThreeViolationModels;
+                    if (list != null)
+                    {
+                        list.ForEach(x => x.StrFines = JsonConvert.SerializeObject(x.lstFine));
+                        _Repeater.DataSource = list;
+                        _Repeater.DataBind();
+                        PageTotal.Value = content.nTotal.ToString();
+                    }
                 }
+                else
+                {
+                    LogManager.Error($"api/ThreeViolation/GetThreeViolationByCusInfos 取得数据为null,参数为：data={JsonConvert.SerializeObject(data)}");
+                }
+                
             }
 
         }

@@ -88,16 +88,22 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(postData));
             if (responseDto.StatusCode == "OK")
             {
-                var content = JsonConvert.DeserializeObject<HtcDtoResult>(responseDto.Content);
-                if (content.oVhtDetailBoth != null)
+                if (responseDto.Content != null)
                 {
-                    var list = content.oVhtDetailBoth.OrderBy(x => x.YHJB).ThenByDescending(x => x.JCSJ).ToList();
+                    var content = JsonConvert.DeserializeObject<HtcDtoResult>(responseDto.Content);
+                    if (content.oVhtDetailBoth != null)
+                    {
+                        var list = content.oVhtDetailBoth.OrderBy(x => x.YHJB).ThenByDescending(x => x.JCSJ).ToList();
 
-                    _Repeater.DataSource = list;
-                    _Repeater.DataBind();
-                    PageTotal.Value = content.nTotal.ToString();
+                        _Repeater.DataSource = list;
+                        _Repeater.DataBind();
+                        PageTotal.Value = content.nTotal.ToString();
+                    }
                 }
-                
+                else
+                {
+                    LogManager.Error($"api/HiddenTrouble/GetHiddentroubleByCusInfos 取得数据为null,参数为：data={JsonConvert.SerializeObject(postData)}");
+                }
             }
         }
 

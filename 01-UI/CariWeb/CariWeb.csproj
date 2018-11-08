@@ -269,8 +269,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Analysis\BarAnalysisHtc.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="LogCongfig.xml" />
+    <Content Include="Analysis\CariPortals.aspx" />
+    <Content Include="Analysis\CircleAnalysisHtc.aspx" />
     <Content Include="PS\NoSafetyActionDetialForm.aspx" />
     <Content Include="PS\YearIdentityDetailForm.aspx" />
     <Content Include="PS\AmRecordDetailForm.aspx" />
@@ -1835,6 +1838,13 @@
     <Content Include="Styles\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analysis\BarAnalysisHtc.aspx.cs">
+      <DependentUpon>BarAnalysisHtc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analysis\BarAnalysisHtc.aspx.designer.cs">
+      <DependentUpon>BarAnalysisHtc.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Default.aspx.cs">
@@ -1848,6 +1858,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Analysis\CariPortals.aspx.cs">
+      <DependentUpon>CariPortals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analysis\CariPortals.aspx.designer.cs">
+      <DependentUpon>CariPortals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Analysis\CircleAnalysisHtc.aspx.cs">
+      <DependentUpon>CircleAnalysisHtc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analysis\CircleAnalysisHtc.aspx.designer.cs">
+      <DependentUpon>CircleAnalysisHtc.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PS\NoSafetyActionDetialForm.aspx.cs">
       <DependentUpon>NoSafetyActionDetialForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

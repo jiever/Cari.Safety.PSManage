@@ -25,11 +25,11 @@
         </div>
         <div class="form-group">
             <label class="control-label">部门：</label>
-            <asp:ListBox runat="server" ID="_Dept" DataTextField="Text" DataValueField="Value" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
+            <asp:ListBox runat="server" ID="_Dept" DataTextField="DataName" DataValueField="DataName" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
         </div>
         <div class="form-group">
             <label class="control-label">事故等级：</label>
-            <asp:ListBox runat="server" ID="_AmLevel" DataTextField="Text" DataValueField="Value" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
+            <asp:ListBox runat="server" ID="_AmLevel" DataTextField="DataName" DataValueField="DataName" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
         </div>
         <div class="form-group">
             <label class="control-label">时间：</label>

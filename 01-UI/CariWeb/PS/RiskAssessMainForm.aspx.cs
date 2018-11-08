@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Framework.Utility;
 using Cari.Safety.BLL.PSManage;
 using Cari.Safety.DTO.PSManage;
 using Newtonsoft.Json;
@@ -55,7 +56,6 @@ namespace CariWeb.PS
                 var data = JsonConvert.DeserializeObject<List<DictionaryDto>>(fxlx.Content);
                 _FXLX.DataSource = data;
                 _FXLX.DataBind();
-                _FXLX.Items.Insert(0, new ListItem() { Text = "", Value = "" });
             }
             var zylx = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetDictionary?type=专业类型");
             if (zylx.StatusCode == "OK")
@@ -63,7 +63,6 @@ namespace CariWeb.PS
                 var data = JsonConvert.DeserializeObject<List<DictionaryDto>>(zylx.Content);
                 _ZYLX.DataSource = data;
                 _ZYLX.DataBind();
-                _ZYLX.Items.Insert(0, new ListItem() { Text = "", Value = "" });
             }
         }
 
@@ -86,14 +85,20 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(data));
             if (responseDto.StatusCode == "OK")
             {
-                var content = JsonConvert.DeserializeObject<AssessDtoResult>(responseDto.Content);
-                if (content.oRiskAssessmentModels != null)
+                if (responseDto.Content != null)
                 {
-                    _Repeater.DataSource = content.oRiskAssessmentModels;
-                    _Repeater.DataBind();
-                    PageTotal.Value = content.nTotal.ToString();
+                    var content = JsonConvert.DeserializeObject<AssessDtoResult>(responseDto.Content);
+                    if (content.oRiskAssessmentModels != null)
+                    {
+                        _Repeater.DataSource = content.oRiskAssessmentModels;
+                        _Repeater.DataBind();
+                        PageTotal.Value = content.nTotal.ToString();
+                    }
                 }
-                
+                else
+                {
+                    LogManager.Error($"api/Risk/GetRiskAssessmentByCusInfos 取得数据为null,参数为：data={JsonConvert.SerializeObject(data)}");
+                }
             }
         }
 

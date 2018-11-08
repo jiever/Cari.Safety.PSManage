@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Framework.Utility;
 using Cari.Safety.DTO.PSManage;
 
 namespace CariWeb.PS
@@ -63,26 +64,35 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Get(url);
             if (responseDto.StatusCode == "OK")
             {
+                LogManager.Info($"1{responseDto.StatusCode}");
                 List<object> list = new List<object>();
-
-                var jobject = JObject.Parse(responseDto.Content);
-                if (jobject != null)
+                LogManager.Info($"2{responseDto.Content}");
+                if (responseDto.Content != null)
                 {
-                    var tokens = jobject.Values().Select(x => x.Path).ToList();
+                    var jobject = JsonConvert.DeserializeObject<JObject>(responseDto.Content);
 
-                    var risknames = tokens.Where(x => !x.Contains("Score")).ToList();
-                    foreach (var item in risknames)
+                    if (jobject != null)
                     {
-                        var name = jobject[item].ToString(); // 风险级别等级
-                        var min = jobject[item + "Score1"]; // 下限
-                        var max = jobject[item + "Score2"]; // 上限
+                        var tokens = jobject.Values().Select(x => x != null ? x.Path : "").ToList();
+                        LogManager.Info($"3{JsonConvert.SerializeObject(tokens)}");
+                        var risknames = tokens.Where(x => !x.Contains("Score")).ToList();
+                        foreach (var item in risknames)
+                        {
+                            var name = jobject[item].ToString(); // 风险级别等级
+                            var min = jobject[item + "Score1"]; // 下限
+                            var max = jobject[item + "Score2"]; // 上限
 
-                        var model = new { Name = name, Min = min, Max = max };
-                        list.Add(model);
+                            var model = new { Name = name, Min = min, Max = max };
+                            list.Add(model);
+                        }
+                        _Repeater.DataSource = list.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
+                        _Repeater.DataBind();
+                        PageTotal.Value = list.Count.ToString();
                     }
-                    _Repeater.DataSource = list.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
-                    _Repeater.DataBind();
-                    PageTotal.Value = list.Count.ToString();
+                }
+                else
+                {
+                    LogManager.Info($"api/Risk/GetRiskLevel 取得数据为null,参数为：key={key}");
                 }
             }
 

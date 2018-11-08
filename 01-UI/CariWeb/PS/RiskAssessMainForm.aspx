@@ -30,11 +30,11 @@
         </div>
         <div class="form-group">
             <label class="control-label">风险类型：</label>
-            <asp:ListBox runat="server" ID="_FXLX" DataTextField="Text" DataValueField="Value" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
+            <asp:ListBox runat="server" ID="_FXLX" DataTextField="DataName" DataValueField="DataName" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
         </div>
         <div class="form-group">
             <label class="control-label">专业类型：</label>
-            <asp:ListBox runat="server" ID="_ZYLX" DataTextField="Text" DataValueField="Value" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
+            <asp:ListBox runat="server" ID="_ZYLX" DataTextField="DataName" DataValueField="DataName" SelectionMode="Multiple" CssClass="multi-select" Width="120px"/>
         </div>
         <div class="form-group">
             <label class="control-label">责任人：</label>

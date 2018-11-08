@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Framework.Utility;
 using Cari.Safety.DTO.PSManage;
 
 namespace CariWeb.PS
@@ -61,20 +62,31 @@ namespace CariWeb.PS
                 Key = _type ? _Mine.SelectedValue : _key,//_type 为true 综合页面
                 arrYear =_Year.Text
             };
-
             var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(data));
             if (responseDto.StatusCode == "OK")
             {
-                var content = JsonConvert.DeserializeObject<YearIdentityDtoResult>(responseDto.Content);
-                content.oYearIdentityModels.ForEach(x => x.StrLstYearIdentityRisks = JsonConvert.SerializeObject(x.LstYearIdentityRisks));
-                if (content.oYearIdentityModels != null)
+                if (responseDto.Content != null)
                 {
-                    var list = content.oYearIdentityModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
-                    _Repeater.DataSource = list;
-                    _Repeater.DataBind();
-                    PageTotal.Value = content.nTotal.ToString();
+                    var content = JsonConvert.DeserializeObject<YearIdentityDtoResult>(responseDto.Content);
+                   
+                    if (content.oYearIdentityModels != null)
+                    {
+                        content.oYearIdentityModels.ForEach(x => x.StrLstYearIdentityRisks = JsonConvert.SerializeObject(x.LstYearIdentityRisks));
+                        var list = content.oYearIdentityModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
+                        _Repeater.DataSource = list;
+                        _Repeater.DataBind();
+                        PageTotal.Value = content.nTotal.ToString();
+                    }
                 }
-                
+                else
+                {
+                    LogManager.Error($"api/Risk/GetYearIdentityByCusInfos 取得数据为null,参数为：data={JsonConvert.SerializeObject(data)}");
+                }
+            }
+            else
+            {
+                LogManager.Error(
+                    $"api/Risk/GetYearIdentityByCusInfos status:{responseDto.StatusCode},参数为：data={JsonConvert.SerializeObject(data)}");
             }
         }
 

@@ -37,7 +37,10 @@ namespace CariWeb.PS
             var scire = JsonConvert.SerializeObject(score);
             List<object> listS = new List<object>();
 
+            var jo = JsonConvert.DeserializeObject(scire);
+            
             var jobject = JObject.Parse(scire);
+            var s1= jobject.PropertyValues();
             var tokens = jobject.Values().Select(x => x.Path).ToList();
 
             var risknames = tokens.Where(x => !x.Contains("Score")).ToList();

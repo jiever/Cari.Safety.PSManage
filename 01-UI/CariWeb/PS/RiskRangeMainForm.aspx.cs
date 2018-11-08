@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Framework.Utility;
 using Cari.Safety.BLL.PSManage;
 using Cari.Safety.DTO.PSManage;
 using Newtonsoft.Json;
@@ -61,15 +62,21 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Get(url);
             if (responseDto.StatusCode == "OK")
             {
-                var content = JsonConvert.DeserializeObject<RiskRangeDtoResult>(responseDto.Content);
-                if (content.oRiskRangeModels != null)
+                if (responseDto.Content != null)
                 {
-                    var list = content.oRiskRangeModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
-                    _Repeater.DataSource = list;
-                    _Repeater.DataBind();
-                    PageTotal.Value = content.nTotal.ToString();
+                    var content = JsonConvert.DeserializeObject<RiskRangeDtoResult>(responseDto.Content);
+                    if (content.oRiskRangeModels != null)
+                    {
+                        var list = content.oRiskRangeModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
+                        _Repeater.DataSource = list;
+                        _Repeater.DataBind();
+                        PageTotal.Value = content.nTotal.ToString();
+                    }
                 }
-                
+                else
+                {
+                    LogManager.Error($"api/Risk/GetRiskRange 取得数据为null,参数为：key={key}");
+                }
             }
         }
 

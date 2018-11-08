@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Cari.Framework.Utility;
 using Cari.Safety.BLL.PSManage;
 using Cari.Safety.DTO.PSManage;
 using Newtonsoft.Json;
@@ -56,7 +57,6 @@ namespace CariWeb.PS
                 var data = JsonConvert.DeserializeObject<List<DictionaryDto>>(sgbm.Content);
                 _Dept.DataSource = data;
                 _Dept.DataBind();
-                _Dept.Items.Insert(0, new ListItem() { Text = "", Value = "" });
             }
             var sgdj = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetDictionary?type=事故性质");
             if (sgdj.StatusCode == "OK")
@@ -64,7 +64,6 @@ namespace CariWeb.PS
                 var data = JsonConvert.DeserializeObject<List<DictionaryDto>>(sgdj.Content);
                 _AmLevel.DataSource = data;
                 _AmLevel.DataBind();
-                _AmLevel.Items.Insert(0, new ListItem() { Text = "", Value = "" });
             }
         }
         private void LoadData()
@@ -86,13 +85,22 @@ namespace CariWeb.PS
             var responseDto = RequestToApi.Post(url, JsonConvert.SerializeObject(data));
             if (responseDto.StatusCode == "OK")
             {
-                var content = JsonConvert.DeserializeObject<AmDtoResult>(responseDto.Content);
-                if (content.OAccidentModels != null)
+                if (responseDto.Content != null)
                 {
-                    _Repeater.DataSource = content.OAccidentModels;
-                    _Repeater.DataBind();
-                    PageTotal.Value = content.nTotal.ToString();
+                    var content = JsonConvert.DeserializeObject<AmDtoResult>(responseDto.Content);
+                    if (content.OAccidentModels != null)
+                    {
+                        _Repeater.DataSource = content.OAccidentModels;
+                        _Repeater.DataBind();
+                        PageTotal.Value = content.nTotal.ToString();
+                    }
                 }
+                else
+                {
+                    LogManager.Error($"api/Accident/GetAccidentByCusInfos 取得数据为null,参数为：data={JsonConvert.SerializeObject(data)}");
+                }
+
+                
             }
         }
 

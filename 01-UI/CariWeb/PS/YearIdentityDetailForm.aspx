@@ -37,17 +37,17 @@
                         <td>
                             <label class="control-label" data-bind="text:FZR"></label>
                         </td>
-                        <td class="form-detail">JGR</td>
+                        <td class="form-detail">监管人</td>
                         <td>
                             <label class="control-label" data-bind="text:JGR"></label>
                         </td>
-                        <td class="form-detail">JKZQ</td>
+                        <td class="form-detail">监控周期</td>
                         <td>
                             <label class="control-label" data-bind="text:JKZQ"></label>
                         </td>
                     </tr>
                     <tr>
-                        <td class="form-detail">ZT</td>
+                        <td class="form-detail">状态</td>
                         <td>
                             <label class="control-label" data-bind="text:ZT"></label>
                         </td>
