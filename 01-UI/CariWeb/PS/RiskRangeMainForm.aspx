@@ -7,7 +7,7 @@
     <div class="form-inline pd10 clearfix" id="MainColumn">
         <div class="form-group" style='<%=_type?"":"display:none"%>'>
             <label class="control-label">矿名：</label>
-            <asp:DropDownList runat="server" ID="_Mine" CssClass="form-control" Width="120px" DataTextField="Text" DataValueField="Value"/>
+            <asp:DropDownList runat="server" ID="_Mine" CssClass="form-control" Width="120px" DataTextField="CoalName" DataValueField="Key"/>
         </div>
         <div style="text-align: right; float: right;">
             <asp:Button runat="server" ID="_RequestButton" Text="查询" OnClick="_RequestButton_Click"
