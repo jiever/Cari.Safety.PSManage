@@ -269,6 +269,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Analysis\BarAnalysisAm.aspx" />
+    <Content Include="Analysis\BarAnalysisRiskLevel.aspx" />
     <Content Include="Analysis\BarAnalysisHtc.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="LogCongfig.xml" />
@@ -1838,6 +1840,20 @@
     <Content Include="Styles\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analysis\BarAnalysisAm.aspx.cs">
+      <DependentUpon>BarAnalysisAm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analysis\BarAnalysisAm.aspx.designer.cs">
+      <DependentUpon>BarAnalysisAm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Analysis\BarAnalysisRiskLevel.aspx.cs">
+      <DependentUpon>BarAnalysisRiskLevel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analysis\BarAnalysisRiskLevel.aspx.designer.cs">
+      <DependentUpon>BarAnalysisRiskLevel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Analysis\BarAnalysisHtc.aspx.cs">
       <DependentUpon>BarAnalysisHtc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

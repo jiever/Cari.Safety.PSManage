@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace CariWeb.Analysis
 {
-    public partial class BarAnalysisHtc : System.Web.UI.Page
+    public partial class BarAnalysisRiskLevel : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +24,7 @@ namespace CariWeb.Analysis
 
         private void GetData()
         {
-            var levels = new List<string>() { "A", "B", "C", "D" };
+            var levels = new List<string>() { "低风险", "一般风险", "较大风险", "重大风险" };
             var apiData = new Dictionary<string, List<int>>();
             var xAxisData = new List<string>(){};//矿名
             var series = new List<object>();

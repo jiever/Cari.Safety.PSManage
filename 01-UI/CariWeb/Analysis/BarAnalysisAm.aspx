@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Page.Master" AutoEventWireup="true" CodeBehind="BarAnalysisHtc.aspx.cs" Inherits="CariWeb.Analysis.BarAnalysisHtc" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Page.Master" AutoEventWireup="true" CodeBehind="BarAnalysisAm.aspx.cs" Inherits="CariWeb.Analysis.BarAnalysisAm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
 </asp:Content>
@@ -50,11 +50,11 @@
         }
 
         $(function() {
-            var url = "<%=ResolveUrl("~/Analysis/BarAnalysisHtc.aspx?type=data") %>";
+            var url = "<%=ResolveUrl("~/Analysis/BarAnalysisAm.aspx?type=data") %>";
             $.post(url,
                 function(ret) {
                     if (ret) {
-                        chartOption("隐患统计图", ret.xAxis, ret.series, ret.legend);
+                        chartOption("事故统计图", ret.xAxis, ret.series, ret.legend);
                     }
                 },'json');
         });
