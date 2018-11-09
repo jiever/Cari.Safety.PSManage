@@ -68,6 +68,7 @@ namespace CariWeb.PS
         }
         private void LoadData()
         {
+            int count = 0;
             int pagesize = 10;
             var pageIndex = Cari.Safety.Utility.Utils.GetInt(this.PageIndex.Value, 1);
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/Accident/GetAccidentByCusInfos";
@@ -92,16 +93,20 @@ namespace CariWeb.PS
                     {
                         _Repeater.DataSource = content.OAccidentModels;
                         _Repeater.DataBind();
-                        PageTotal.Value = content.nTotal.ToString();
+                        count = content.nTotal;
                     }
                 }
                 else
                 {
                     LogManager.Error($"api/Accident/GetAccidentByCusInfos 取得数据为null,参数为：data={JsonConvert.SerializeObject(data)}");
                 }
-
-                
             }
+            else
+            {
+                LogManager.Error(
+                    $"api/Accident/GetAccidentByCusInfos status:{responseDto.StatusCode},参数为：data={JsonConvert.SerializeObject(data)}");
+            }
+            PageTotal.Value = count.ToString();
         }
 
 

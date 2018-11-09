@@ -87,7 +87,7 @@ namespace CariWeb.PS
                         }
                         _Repeater.DataSource = list.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
                         _Repeater.DataBind();
-                        PageTotal.Value = list.Count.ToString();
+                        count = list.Count;
                     }
                 }
                 else
@@ -95,6 +95,12 @@ namespace CariWeb.PS
                     LogManager.Info($"api/Risk/GetRiskLevel 取得数据为null,参数为：key={key}");
                 }
             }
+            else
+            {
+                LogManager.Error(
+                    $"api/Risk/GetRiskLevel status:{responseDto.StatusCode},参数为：key={key}");
+            }
+            PageTotal.Value = count.ToString();
 
         }
 

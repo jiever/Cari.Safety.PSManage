@@ -71,6 +71,7 @@ namespace CariWeb.PS
 
         private void LoadData()
         {
+            int count = 0;
             int pagesize = 10;
             var pageIndex = Cari.Safety.Utility.Utils.GetInt(this.PageIndex.Value, 1);
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddentroubleByCusInfos";
@@ -97,7 +98,7 @@ namespace CariWeb.PS
 
                         _Repeater.DataSource = list;
                         _Repeater.DataBind();
-                        PageTotal.Value = content.nTotal.ToString();
+                        count = content.nTotal;
                     }
                 }
                 else
@@ -105,6 +106,12 @@ namespace CariWeb.PS
                     LogManager.Error($"api/HiddenTrouble/GetHiddentroubleByCusInfos 取得数据为null,参数为：data={JsonConvert.SerializeObject(postData)}");
                 }
             }
+            else
+            {
+                LogManager.Error(
+                    $"api/HiddenTrouble/GetHiddentroubleByCusInfos status:{responseDto.StatusCode},参数为：data={JsonConvert.SerializeObject(postData)}");
+            }
+            PageTotal.Value = count.ToString();
         }
 
         protected void _RequestButton_Click(object sender, EventArgs e)

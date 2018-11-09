@@ -75,7 +75,7 @@ namespace CariWeb.PS
                         var list = content.oYearIdentityModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
                         _Repeater.DataSource = list;
                         _Repeater.DataBind();
-                        PageTotal.Value = content.nTotal.ToString();
+                        count = content.nTotal;
                     }
                 }
                 else
@@ -88,6 +88,7 @@ namespace CariWeb.PS
                 LogManager.Error(
                     $"api/Risk/GetYearIdentityByCusInfos status:{responseDto.StatusCode},参数为：data={JsonConvert.SerializeObject(data)}");
             }
+            PageTotal.Value = count.ToString();
         }
 
         protected void _RequestButton_Click(object sender, EventArgs e)

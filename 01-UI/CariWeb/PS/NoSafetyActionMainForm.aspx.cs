@@ -79,15 +79,21 @@ namespace CariWeb.PS
                         list.ForEach(x => x.StrFines = JsonConvert.SerializeObject(x.lstFine));
                         _Repeater.DataSource = list;
                         _Repeater.DataBind();
-                        PageTotal.Value = content.nTotal.ToString();
+                        count = content.nTotal;
                     }
                 }
                 else
                 {
                     LogManager.Error($"api/ThreeViolation/GetThreeViolationByCusInfos 取得数据为null,参数为：data={JsonConvert.SerializeObject(data)}");
                 }
-                
+
             }
+            else
+            {
+                LogManager.Error(
+                    $"api/ThreeViolation/GetThreeViolationByCusInfos status:{responseDto.StatusCode},参数为：data={JsonConvert.SerializeObject(data)}");
+            }
+            PageTotal.Value = count.ToString();
 
         }
 
