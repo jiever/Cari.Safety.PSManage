@@ -10,7 +10,7 @@
 namespace CariWeb.PS {
     
     
-    public partial class HtcCorrentionDetialForm {
+    public partial class HtcRecordDetialForm {
         
         /// <summary>
         /// YHNR 控件。

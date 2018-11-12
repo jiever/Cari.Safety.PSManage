@@ -18,6 +18,6 @@ namespace Cari.Safety.DTO.PSManage
     public class RiskRangeDtoResult
     {
         public int nTotal { get; set; }
-        public string oRiskRangeModels { get; set; }
+        public List<RiskRangeDto> oRiskRangeModels { get; set; }
     }
 }

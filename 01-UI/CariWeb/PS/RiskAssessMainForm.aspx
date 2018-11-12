@@ -52,7 +52,7 @@
                     <th style="width: 90px">年度</th>
                     <th style="width: 150px">风险来源</th>
                     <th style="width: 150px">风险地点</th>
-                    <th>风险描述</th>
+                    <th style="width: 200px">风险描述</th>
                     <th style="width: 120px">风险类型</th>
                     <th style="width: 120px">专业类型</th>
                     <th style="width: 120px">灾害类型</th>

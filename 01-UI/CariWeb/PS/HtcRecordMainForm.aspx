@@ -94,6 +94,8 @@
         <asp:HiddenField runat="server" ID="PageTotal" />
     </div>
     <script type="text/javascript">
+        var data = new Object();
+
         $(function () {
             kkpager.generPageHtml({
                 pno: $("#<%=PageIndex.ClientID%>").val(),
@@ -108,7 +110,6 @@
             kkpager.selectPage($("#<%=PageIndex.ClientID%>").val());
         });
         
-        var data=new Object();
 
         function openDetail(obj) {
             var hids = $(obj).closest("td");

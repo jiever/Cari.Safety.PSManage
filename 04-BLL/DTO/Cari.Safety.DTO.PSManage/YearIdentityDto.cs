@@ -16,6 +16,7 @@ namespace Cari.Safety.DTO.PSManage
         public string CHRY { get; set; }
         public string HYNR { get; set; }
         public string BZ { get; set; }
+        public int FXSL => LstYearIdentityRisks.Count;
         public List<Risks> LstYearIdentityRisks { get; set; }
         public string StrLstYearIdentityRisks { get; set; }
     }
