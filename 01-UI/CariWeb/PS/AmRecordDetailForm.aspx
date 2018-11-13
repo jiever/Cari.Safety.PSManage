@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="Content">
-        <table class="table table-bordered mb0">
+        <table class="table table-bordered table-hover">
             <tr>
                 <td width="100px" class="form-detail">姓名
                 </td>
@@ -23,17 +23,17 @@
                 </td>
             </tr>
             <tr>
-                <td width="100px" class="form-detail">工种
+                <td class="form-detail">工种
                 </td>
                 <td>
                     <asp:Label ID="GZ" runat="server" CssClass="control-label set"></asp:Label>
                 </td>
-                <td width="100px" class="form-detail">受伤程度
+                <td class="form-detail">受伤程度
                 </td>
                 <td>
                     <asp:Label ID="SSCD" runat="server" CssClass="control-label set"></asp:Label>
                 </td>
-                <td width="100px" class="form-detail">受伤部位
+                <td class="form-detail">受伤部位
                 </td>
                 <td>
                     <asp:Label ID="SSBW" runat="server" CssClass="control-label set"></asp:Label>
@@ -52,6 +52,7 @@
             var labs = $("#Content").find(".set");
             labs.each(function (index, item) {
                 $(item).text(data[item.id]);
+                $(item).attr("title", data[item.id]);
             });
         })
     </script>

@@ -45,13 +45,13 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th style="width: 120px">责任部门</th>
+                    <th style="width: 90px">责任部门</th>
                     <th style="width: 150px">事故发生地点</th>
                     <th>事故描述</th>
-                    <th style="width: 120px">事故级别</th>
-                    <th style="width: 120px">事故发生时间</th>
+                    <th style="width: 90px">事故级别</th>
+                    <th style="width: 140px">事故发生时间</th>
                     <th>事故紧急措施</th>
-                    <th style="width: 120px">伤员情况</th>
+                    <th style="width: 90px">伤员情况</th>
                 </tr>
             </thead>
             <asp:Repeater runat="server" ID="_Repeater">
@@ -71,7 +71,7 @@
                             <input type="hidden" name="GZ" value="<%#Eval("GZ")%>"/>
                             <input type="hidden" name="SSCD" value="<%#Eval("SSCD")%>"/>
                             <input type="hidden" name="SSBW" value="<%#Eval("SSBW")%>"/>
-                            <a class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
+                            <a href="javascript:void(0)" class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
                         </td>
                     </tr>
             </ItemTemplate>

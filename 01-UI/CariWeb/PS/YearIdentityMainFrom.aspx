@@ -24,12 +24,12 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th style="width: 120px">年度</th>
-                    <th style="width: 120px">风险数量</th>
-                    <th style="width: 120px">主持人</th>
-                    <th style="width: 120px">记录人</th>
+                    <th style="width: 60px">年度</th>
+                    <th style="width: 90px">风险数量</th>
+                    <th style="width: 90px">主持人</th>
+                    <th style="width: 90px">记录人</th>
                     <th>备注</th>
-                    <th style="width: 120px">详情</th>
+                    <th style="width: 90px">详情</th>
                 </tr>
             </thead>
             <asp:Repeater runat="server" ID="_Repeater">
@@ -39,10 +39,10 @@
                         <td><%#Eval("FXSL")%></td>
                         <td><%#Eval("ZCR")%></td>
                         <td><%#Eval("JLR")%></td>
-                        <td><%#Eval("BZ")%></td>
+                        <td title='<%#Eval("BZ")%>'><%#Eval("BZ")%></td>
                         <td>
-                            <input type="hidden" name="XQList" value="<%#Eval("StrLstYearIdentityRisks")%>" />
-                            <a class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
+                            <input type="hidden" name="XQList" value='<%#Eval("StrLstYearIdentityRisks")%>' />
+                            <a href="javascript:void(0)" class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -74,14 +74,15 @@
         function openDetail(obj) {
             var hids = $(obj).closest("td");
             var childStr = hids.find("input[name='XQList']").val();
+            console.log(childStr)
             var jobect = JSON.parse(childStr);
             GetKOData(jobect);
 
             openDialog({
-                url: '<%=ResolveUrl("~/PS/YearIdentityDetailForm.aspx")%>?',
+                url: '<%=ResolveUrl("~/PS/YearIdentityDetailForm.aspx")%>',
                 title: "详情",
                 height: 450,
-                width: 700
+                width: 1000
             }, function () {
 
             });

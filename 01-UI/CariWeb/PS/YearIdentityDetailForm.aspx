@@ -7,57 +7,57 @@
     <div id="kobind" class="form-inline pt10">
         <ul data-bind="foreach: koData">
             <li>
-                <table class="table table-bordered mb0">
+                <table class="table table-bordered table-hover">
                     <tr>
-                        <td class="form-detail">风险地段</td>
+                        <td class="form-detail" style="width: 100px">风险地段</td>
                         <td>
-                            <label class="control-label" data-bind="text:FXDD"></label>
+                            <label class="control-label" data-bind="text: FXDD, attr: {title:FXDD}"></label>
                         </td>
-                        <td class="form-detail">风险描述</td>
+                        <td class="form-detail" style="width: 100px">风险描述</td>
                         <td>
-                            <label class="control-label" data-bind="text:FXMS"></label>
+                            <label class="control-label" data-bind="text:FXMS, attr: {title:FXMS}"></label>
                         </td>
-                        <td class="form-detail">风险类型</td>
+                        <td class="form-detail" style="width: 100px">风险类型</td>
                         <td>
-                            <label class="control-label" data-bind="text:FXLX"></label>
+                            <label class="control-label" data-bind="text:FXLX, attr: {title:FXLX}"></label>
                         </td>
                     </tr>
                     <tr>
                         <td class="form-detail">专业类型</td>
                         <td>
-                            <label class="control-label" data-bind="text:ZYLX"></label>
+                            <label class="control-label" data-bind="text:ZYLX, attr: {title:ZYLX}"></label>
                         </td>
-                        <td class="form-detail" colspan="3">管控措施</td>
-                        <td>
-                            <label class="control-label" data-bind="text:GKCS"></label>
+                        <td class="form-detail">管控措施</td>
+                        <td colspan="3">
+                            <label class="control-label" data-bind="text:GKCS, attr: {title:GKCS}"></label>
                         </td>
                     </tr>
                     <tr>
                         <td class="form-detail">负责人</td>
                         <td>
-                            <label class="control-label" data-bind="text:FZR"></label>
+                            <label class="control-label" data-bind="text:FZR, attr: {title:FZR}"></label>
                         </td>
                         <td class="form-detail">监管人</td>
                         <td>
-                            <label class="control-label" data-bind="text:JGR"></label>
+                            <label class="control-label" data-bind="text:JGR, attr: {title:JGR}"></label>
                         </td>
                         <td class="form-detail">监控周期</td>
                         <td>
-                            <label class="control-label" data-bind="text:JKZQ"></label>
+                            <label class="control-label" data-bind="text:JKZQ, attr: {title:JKZQ}"></label>
                         </td>
                     </tr>
                     <tr>
                         <td class="form-detail">状态</td>
                         <td>
-                            <label class="control-label" data-bind="text:ZT"></label>
+                            <label class="control-label" data-bind="text:ZT, attr: {title:ZT}"></label>
                         </td>
                         <td class="form-detail">灾害类型</td>
                         <td>
-                            <label class="control-label" data-bind="text:ZHLX"></label>
+                            <label class="control-label" data-bind="text:ZHLX, attr: {title:ZHLX}"></label>
                         </td>
                         <td class="form-detail">可能导致事故</td>
                         <td>
-                            <label class="control-label" data-bind="text:KNDZSG"></label>
+                            <label class="control-label" data-bind="text:KNDZSG, attr: {title:KNDZSG}"></label>
                         </td>
                     </tr>
                 </table>

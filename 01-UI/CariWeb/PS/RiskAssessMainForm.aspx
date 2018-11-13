@@ -49,31 +49,31 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th style="width: 90px">年度</th>
-                    <th style="width: 150px">风险来源</th>
-                    <th style="width: 150px">风险地点</th>
+                    <th style="width: 60px">年度</th>
+                    <th style="width: 120px">风险来源</th>
+                    <th style="width: 140px">风险地点</th>
                     <th style="width: 200px">风险描述</th>
-                    <th style="width: 120px">风险类型</th>
-                    <th style="width: 120px">专业类型</th>
-                    <th style="width: 120px">灾害类型</th>
-                    <th style="width: 120px">可能导致事故</th>
-                    <th style="width: 150px">管理措施</th>
-                    <th style="width: 120px">责任人</th>
-                    <th style="width: 120px">风险级别</th>
+                    <th style="width: 90px">风险类型</th>
+                    <th style="width: 90px">专业类型</th>
+                    <th style="width: 90px">灾害类型</th>
+                    <th style="width: 140px">可能导致事故</th>
+                    <th style="width: 200px">管理措施</th>
+                    <th style="width: 90px">责任人</th>
+                    <th style="width: 90px">风险级别</th>
                 </tr>
             </thead>
             <asp:Repeater runat="server" ID="_Repeater">
                 <ItemTemplate>
                     <tr>
                         <td><%#Eval("ND")%></td>
-                        <td><%#Eval("FXLY")%></td>
-                        <td><%#Eval("FXDD")%></td>
-                        <td><%#Eval("FXMS")%></td>
+                        <td title="<%#Eval("FXLY")%>"><%#Eval("FXLY")%></td>
+                        <td title="<%#Eval("FXDD")%>"><%#Eval("FXDD")%></td>
+                        <td title="<%#Eval("FXMS")%>"><%#Eval("FXMS")%></td>
                         <td><%#Eval("FXLX")%></td>
                         <td><%#Eval("ZYLX")%></td>
                         <td><%#Eval("ZHLX")%></td>
-                        <td><%#Eval("KNDZSG")%></td>
-                        <td><%#Eval("GLCS")%></td>
+                        <td title="<%#Eval("KNDZSG")%>"><%#Eval("KNDZSG")%></td>
+                        <td title="<%#Eval("GLCS")%>"><%#Eval("GLCS")%></td>
                         <td><%#Eval("ZRR")%></td>
                         <td><%#Eval("FXJB")%></td>
                     </tr>

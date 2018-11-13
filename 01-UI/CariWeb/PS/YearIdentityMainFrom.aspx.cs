@@ -71,8 +71,8 @@ namespace CariWeb.PS
                    
                     if (content.oYearIdentityModels != null)
                     {
-                        content.oYearIdentityModels.ForEach(x => x.StrLstYearIdentityRisks = JsonConvert.SerializeObject(x.LstYearIdentityRisks));
-                        var list = content.oYearIdentityModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize);
+                        var list = content.oYearIdentityModels.Skip(pagesize * (pageIndex - 1)).Take(pagesize).ToList();
+                        list.ForEach(x => x.StrLstYearIdentityRisks = JsonConvert.SerializeObject(x.LstYearIdentityRisks));
                         _Repeater.DataSource = list;
                         _Repeater.DataBind();
                         count = content.nTotal;

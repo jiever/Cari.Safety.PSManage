@@ -18,18 +18,18 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th style="width: 120px">辨识名称</th>
-                    <th style="width: 120px">描述</th>
-                    <th style="width: 120px">类型</th>
-                    <th style="width: 120px">开始时间</th>
-                    <th style="width: 120px">结束时间</th>
+                    <th style="width: 140px">辨识名称</th>
+                    <th>描述</th>
+                    <th style="width: 90px">类型</th>
+                    <th style="width: 140px">开始时间</th>
+                    <th style="width: 140px">结束时间</th>
                 </tr>
             </thead>
             <asp:Repeater runat="server" ID="_Repeater">
                 <ItemTemplate>
                     <tr>
                         <td><%#Eval("BSMC")%></td>
-                        <td><%#Eval("MS")%></td>
+                        <td title='<%#Eval("MS")%>'><%#Eval("MS")%></td>
                         <td><%#Eval("LX")%></td>
                         <td><%#Eval("KSSJ")%></td>
                         <td><%#Eval("JSSJ")%></td>

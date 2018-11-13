@@ -24,15 +24,15 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th style="width: 150px">发生时间</th>
-                    <th style="width: 120px">不安全人员</th>
+                    <th style="width: 140px">发生时间</th>
+                    <th style="width: 90px">不安全人员</th>
                     <th style="width: 90px">部门</th>
-                    <th style="width: 120px">工种</th>
+                    <th style="width: 90px">工种</th>
                     <th style="width: 90px">班次</th>
-                    <th style="width: 120px">检查人</th>
+                    <th style="width: 90px">检查人</th>
                     <th style="width: 200px">不安全行为描述</th>
                     <th>处理意见</th>
-                    <th style="width: 120px">扣罚款情况</th>
+                    <th style="width: 90px">扣罚款情况</th>
                 </tr>
             </thead>
             <asp:Repeater runat="server" ID="_Repeater">
@@ -44,11 +44,11 @@
                         <td><%#Eval("GZ")%></td>
                         <td><%#Eval("BC")%></td>
                         <td><%#Eval("JCR")%></td>
-                        <td><%#Eval("BAQXWMS")%></td>
-                        <td><%#Eval("CLYJ")%></td>
+                        <td title="<%#Eval("BAQXWMS")%>"><%#Eval("BAQXWMS")%></td>
+                        <td title="<%#Eval("CLYJ")%>"><%#Eval("CLYJ")%></td>
                         <td>
-                            <input type="hidden" name="StrFines" value="<%# Newtonsoft.Json.JsonConvert.SerializeObject( Eval("StrFines"))%>"/>
-                            <a class="glyphicon glyphicon-edit" onclick="openDetail(this)">扣罚款情况</a>
+                            <input type="hidden" name="StrFines" value='<%#  Eval("StrFines")%>'/>
+                            <a href="javascript:void(0)" class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
                         </td>
                     </tr>
             </ItemTemplate>

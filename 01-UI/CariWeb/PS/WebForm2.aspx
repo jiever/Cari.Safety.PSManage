@@ -32,6 +32,7 @@
             var labs = $("#Content").find(".set");
             labs.each(function (index, item) {
                 $(item).text(data[item.id]);
+                $(item).attr("title", data[item.id]);
             });
         })
     </script>

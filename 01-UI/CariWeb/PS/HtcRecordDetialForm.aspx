@@ -4,26 +4,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="Content">
-        <table class="table table-bordered mb0">
+        <table class="table table-bordered table-hover">
             <tr>
-                <td width="100px" class="form-detail">隐患整改内容
+                <td style="width: 100px" class="form-detail">隐患整改内容
                 </td>
                 <td colspan="5">
                     <asp:Label ID="YHNR" runat="server" CssClass="control-label set"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td class="form-detail">隐患级别</td>
+                <td style="width: 100px" class="form-detail">隐患级别</td>
                 <td>
-
                     <asp:Label ID="YHJB" runat="server" CssClass="control-label set"></asp:Label>
                 </td>
-                <td class="form-detail">整改时间</td>
+                <td style="width: 100px" class="form-detail">整改时间</td>
                 <td>
-
                     <asp:Label ID="ZGSJ" runat="server" CssClass="control-label set"></asp:Label>
                 </td>
-                <td class="form-detail">整改人</td>
+                <td style="width: 100px" class="form-detail">整改人</td>
                 <td>
                     <asp:Label ID="ZGR" runat="server" CssClass="control-label set"></asp:Label>
                 </td>
@@ -83,6 +81,7 @@
             var labs = $("#Content").find(".set");
             labs.each(function (index, item) {
                 $(item).text(data[item.id]);
+                $(item).attr("title", data[item.id]);
             });
         })
     </script>

@@ -45,15 +45,15 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th style="width: 120px">检查人</th>
-                    <th style="width: 120px">检查时间</th>
-                    <th style="width: 120px">检查类型</th>
-                    <th style="width: 120px">隐患地点</th>
-                    <th style="width: 120px">隐患级别</th>
-                    <th style="width: 120px">隐患类型</th>
-                    <th style="width: 120px">所属专业</th>
+                    <th style="width: 90px">检查人</th>
+                    <th style="width: 140px">检查时间</th>
+                    <th style="width: 90px">检查类型</th>
+                    <th style="width: 140px">隐患地点</th>
+                    <th style="width: 90px">隐患级别</th>
+                    <th style="width: 90px">隐患类型</th>
+                    <th style="width: 90px">所属专业</th>
                     <th>隐患内容</th>
-                    <th style="width: 120px">整改落实情况</th>
+                    <th style="width: 100px">整改落实情况</th>
                 </tr>
             </thead>
             <asp:Repeater runat="server" ID="_Repeater">
@@ -62,11 +62,11 @@
                         <td><%#Eval("JCR")%></td>
                         <td><%#Eval("JCSJ")%></td>
                         <td><%#Eval("JCLX")%></td>
-                        <td><%#Eval("YHDD")%></td>
+                        <td title="<%#Eval("YHDD")%>"><%#Eval("YHDD")%></td>
                         <td><%#Eval("YHJB")%></td>
                         <td><%#Eval("YHLX")%></td>
                         <td><%#Eval("SSZY")%></td>
-                        <td><%#Eval("YHNR")%></td>
+                        <td title="<%#Eval("YHNR")%>"><%#Eval("YHNR")%></td>
                         <td>
                             <input type="hidden" name="YHNR" value="<%#Eval("YHNR")%>"/>
                             <input type="hidden" name="YHJB" value="<%#Eval("YHJB")%>"/>
@@ -81,7 +81,7 @@
                             <input type="hidden" name="ZGQK" value="<%#Eval("ZGQK")%>"/>
                             <input type="hidden" name="ZGJG" value="<%#Eval("ZGJG")%>"/>
                             <input type="hidden" name="FCJG" value="<%#Eval("FCJG")%>"/>
-                            <a class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
+                            <a href="javascript:void(0)" class="glyphicon glyphicon-edit" onclick="openDetail(this)">查看详情</a>
                         </td>
                     </tr>
             </ItemTemplate>
