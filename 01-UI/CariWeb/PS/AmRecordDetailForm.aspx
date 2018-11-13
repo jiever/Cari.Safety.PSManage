@@ -47,7 +47,8 @@
     </div>
     <script>
         $(function () {
-            var data = parent.GetObj();
+            var p = top.fraMain || parent;
+            var data = p.GetObj();
             var labs = $("#Content").find(".set");
             labs.each(function (index, item) {
                 $(item).text(data[item.id]);

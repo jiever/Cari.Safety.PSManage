@@ -90,7 +90,8 @@ namespace CariWeb.PS
                     var content = JsonConvert.DeserializeObject<AssessDtoResult>(responseDto.Content);
                     if (content.oRiskAssessmentModels != null)
                     {
-                        _Repeater.DataSource = content.oRiskAssessmentModels;
+                        var list = content.oRiskAssessmentModels.Skip((pageIndex - 1) * pagesize).Take(pagesize);
+                        _Repeater.DataSource = list;
                         _Repeater.DataBind();
                         count = content.nTotal;
                     }

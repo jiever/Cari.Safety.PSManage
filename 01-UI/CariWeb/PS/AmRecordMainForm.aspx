@@ -106,7 +106,7 @@
                 data[item.name] = item.value;
             });
             openDialog({
-                url: '<%=ResolveUrl("~/PS/AmRecordDetailForm.aspx")%>?',
+                url: '<%=ResolveUrl("~/PS/AmRecordDetailForm.aspx")%>',
                 title: "详情",
                 height: 450,
                 width: 700

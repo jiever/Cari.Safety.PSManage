@@ -76,8 +76,9 @@ namespace CariWeb.PS
                     var list = content.oThreeViolationModels;
                     if (list != null)
                     {
-                        list.ForEach(x => x.StrFines = JsonConvert.SerializeObject(x.lstFine));
-                        _Repeater.DataSource = list;
+                        var result = list.Skip((pageIndex - 1) * pagesize).Take(pagesize).ToList();
+                        result.ForEach(x => x.StrFines = JsonConvert.SerializeObject(x.lstFine));
+                        _Repeater.DataSource = result;
                         _Repeater.DataBind();
                         count = content.nTotal;
                     }

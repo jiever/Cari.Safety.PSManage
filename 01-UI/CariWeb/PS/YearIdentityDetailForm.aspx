@@ -71,7 +71,8 @@
     </div>
     <script>
         var AppViewModel = function () {
-            var m = parent.koDataP;
+            var p = top.fraMain || parent;
+            var m = p.koDataP;
             var self = this;
             self.koData = ko.observableArray(m);
         }

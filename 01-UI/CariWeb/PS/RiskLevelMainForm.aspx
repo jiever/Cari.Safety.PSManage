@@ -54,27 +54,5 @@
             });
             kkpager.selectPage($("#<%=PageIndex.ClientID%>").val());
         });
-        
-        var data=new Object();
-
-        function openDetail(obj) {
-            var hids = $(obj).closest("td");
-            hids.find("input[type='hidden']").each(function(index, item) {
-                data[item.name] = item.value;
-            });
-            openDialog({
-                url: '<%=ResolveUrl("~/PS/HtcRecordDetialForm.aspx")%>?',
-                title: "详情",
-                height: 450,
-                width: 700
-            }, function () {
-               
-            });
-
-        }
-       
-        function GetObj() {
-            return data;
-        }
     </script>
 </asp:Content>
