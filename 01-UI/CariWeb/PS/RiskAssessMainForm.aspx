@@ -45,7 +45,7 @@
                         class="btn btn-primary" data-loading-text="正在查询" />
         </div>
     </div>
-    <div class="pl10 pr10" id="main_list" style="overflow-y: auto;">
+    <div class="pl10 pr10" id="main_list">
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>

@@ -119,7 +119,7 @@
             openDialog({
                 url: '<%=ResolveUrl("~/PS/HtcRecordDetialForm.aspx")%>?',
                 title: "详情",
-                height: 230,
+                height: 240,
                 width: 700
             }, function () {
                
