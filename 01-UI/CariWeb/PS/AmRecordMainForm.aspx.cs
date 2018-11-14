@@ -48,7 +48,6 @@ namespace CariWeb.PS
                     var data = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
                     _Mine.DataSource = data;
                     _Mine.DataBind();
-                    _Mine.Items.Insert(0, new ListItem() {Text = "所有矿井", Value = ""});
                 }
             }
             var sgbm = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetDictionary?type=部门");
