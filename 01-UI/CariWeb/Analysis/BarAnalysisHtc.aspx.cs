@@ -28,25 +28,52 @@ namespace CariWeb.Analysis
             var apiData = new Dictionary<string, List<int>>();
             var xAxisData = new List<string>(){};//矿名
             var series = new List<object>();
-
-            var url =
-                $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=";
-            var responseDto = RequestToApi.Get(url);
+            var mines = new List<CoalKeyDto>();
+            
+            var responseDto = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=");
             if (responseDto.StatusCode == "OK")
             {
-                var data = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
-                xAxisData.AddRange(data.Select(x=>x.CoalName));
+                mines = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
+            }
+            //获取当天隐患数据
+            var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddenTroubleCount";
+            var postData = new
+            {
+                key = ConfigurationManager.AppSettings["AllMineKey"],
+                strStart = DateTime.Now.AddYears(-2).Date.ToString("yyyy-MM-dd HH:mm:ss"),
+                strEnd = DateTime.Now.Date.AddDays(1).AddSeconds(-1).ToString("yyyy-MM-dd HH:mm:ss"),
+            };
+            var rDto = RequestToApi.Post(url, JsonConvert.SerializeObject(postData));
+            var htcList = new List<AnalysisHtcDto>();
+            if (rDto.StatusCode == "OK")
+            {
+                if (rDto.Content != null)
+                {
+                    htcList = JsonConvert.DeserializeObject<List<AnalysisHtcDto>>(responseDto.Content);
+                }
             }
 
-            for (int i = 0; i < xAxisData.Count; i++)
+            var aData = new List<int>();
+            var bData = new List<int>();
+            var cData = new List<int>();
+            var dData = new List<int>();
+            for (int i = 0; i < mines.Count; i++)
             {
-                
+                xAxisData.Add(mines[i].CoalName);
+                var @default = htcList.FirstOrDefault(x => x.strFrameName == mines[i].CoalName);
+                aData.Add(@default?.nA ?? 0);
+                bData.Add(@default?.nB ?? 0);
+                cData.Add(@default?.nC ?? 0);
+                dData.Add(@default?.nD ?? 0);
             }
-            
+            apiData.Add("A", aData);
+            apiData.Add("B", bData);
+            apiData.Add("C", cData);
+            apiData.Add("D", dData);
             for (int i = 0; i < levels.Count; i++)
             {
-                var data =new List<int>();
-                apiData.TryGetValue(xAxisData[i], out data);
+                List<int> data;
+                apiData.TryGetValue(levels[i], out data);
                 series.Add(new
                 {
                     name = levels[i],

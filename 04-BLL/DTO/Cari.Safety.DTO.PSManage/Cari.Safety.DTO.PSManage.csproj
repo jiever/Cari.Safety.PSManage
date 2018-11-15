@@ -42,8 +42,12 @@
   <ItemGroup>
     <Compile Include="ActionDto.cs" />
     <Compile Include="AmDto.cs" />
+    <Compile Include="AnalysisAmDto.cs" />
+    <Compile Include="AnalysisRiskDto.cs" />
+    <Compile Include="AnalysisHtcDto.cs" />
     <Compile Include="ApiResponseDto.cs" />
     <Compile Include="AssessDto.cs" />
+    <Compile Include="CircleDto.cs" />
     <Compile Include="CoalKeyDto.cs" />
     <Compile Include="DictionaryDto.cs" />
     <Compile Include="HtcDto.cs" />

@@ -28,25 +28,53 @@ namespace CariWeb.Analysis
             var apiData = new Dictionary<string, List<int>>();
             var xAxisData = new List<string>(){};//矿名
             var series = new List<object>();
-
-            var url =
-                $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=";
-            var responseDto = RequestToApi.Get(url);
+            var mines = new List<CoalKeyDto>();
+            
+            var responseDto = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=");
             if (responseDto.StatusCode == "OK")
             {
-                var data = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
-                xAxisData.AddRange(data.Select(x=>x.CoalName));
+                mines = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
+            }
+            var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddenTroubleCount";
+            var postData = new
+            {
+                key = ConfigurationManager.AppSettings["AllMineKey"],
+                strStart = DateTime.Now.AddYears(-2).Date.ToString("yyyy-MM-dd HH:mm:ss"),
+                strEnd = DateTime.Now.Date.AddDays(1).AddSeconds(-1).ToString("yyyy-MM-dd HH:mm:ss"),
+            };
+            var rDto = RequestToApi.Post(url, JsonConvert.SerializeObject(postData));
+            var amList = new List<AnalysisAmDto>();
+            if (rDto.StatusCode == "OK")
+            {
+                if (rDto.Content != null)
+                {
+                    amList = JsonConvert.DeserializeObject<List<AnalysisAmDto>>(responseDto.Content);
+                }
             }
 
-            for (int i = 0; i < xAxisData.Count; i++)
+            var ybData = new List<int>();
+            var zdData = new List<int>();
+            var tdData = new List<int>();
+            var tbzdData = new List<int>();
+            for (int i = 0; i < mines.Count; i++)
             {
-                
+                xAxisData.Add(mines[i].CoalName);
+                var @default = amList.FirstOrDefault(x => x.strFrameName == mines[i].CoalName);
+
+                ybData.Add(@default?.nYB ?? 0);
+                zdData.Add(@default?.nZD ?? 0);
+                tdData.Add(@default?.nTD ?? 0);
+                tbzdData.Add(@default?.nTBZD ?? 0);
             }
-            
+
+            apiData.Add("一般事故", ybData);
+            apiData.Add("重大事故", zdData);
+            apiData.Add("特大事故", tdData);
+            apiData.Add("特别重大事故", tbzdData);
             for (int i = 0; i < levels.Count; i++)
             {
                 var data =new List<int>();
-                apiData.TryGetValue(xAxisData[i], out data);
+                apiData.TryGetValue(levels[i], out data);
                 series.Add(new
                 {
                     name = levels[i],

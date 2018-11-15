@@ -9,7 +9,7 @@
 
     <script type="text/javascript">
         function chartOption(title, data, series, legend) {
-            var myChart = echarts.init(document.getElementById('department-chart'));
+            var myChart = echarts.init(document.getElementById('chart'));
 
             var options = {
                 title: {
