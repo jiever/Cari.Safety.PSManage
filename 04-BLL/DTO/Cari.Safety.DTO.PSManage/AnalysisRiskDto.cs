@@ -15,5 +15,6 @@ namespace Cari.Safety.DTO.PSManage
         public int nC { get; set; }
         public int nD { get; set; }
         public int nQT { get; set; }
+        public int nIndex { get; set; }
     }
 }

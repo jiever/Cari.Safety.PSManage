@@ -28,18 +28,18 @@ namespace CariWeb.Analysis
             var apiData = new Dictionary<string, List<int>>();
             var xAxisData = new List<string>(){};//矿名
             var series = new List<object>();
-            var mines = new List<CoalKeyDto>();
+            //var mines = new List<CoalKeyDto>();
             
-            var responseDto = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=");
-            if (responseDto.StatusCode == "OK")
-            {
-                mines = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
-            }
+            //var responseDto = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=");
+            //if (responseDto.StatusCode == "OK")
+            //{
+            //    mines = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
+            //}
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/HiddenTrouble/GetHiddenTroubleCount";
             var postData = new
             {
                 key = ConfigurationManager.AppSettings["AllMineKey"],
-                strStart = DateTime.Now.AddYears(-2).Date.ToString("yyyy-MM-dd HH:mm:ss"),
+                strStart = DateTime.Now.Date.AddDays(-7).ToString("yyyy-MM-dd HH:mm:ss"),
                 strEnd = DateTime.Now.Date.AddDays(1).AddSeconds(-1).ToString("yyyy-MM-dd HH:mm:ss"),
             };
             var rDto = RequestToApi.Post(url, JsonConvert.SerializeObject(postData));
@@ -48,7 +48,8 @@ namespace CariWeb.Analysis
             {
                 if (rDto.Content != null)
                 {
-                    amList = JsonConvert.DeserializeObject<List<AnalysisAmDto>>(responseDto.Content);
+                    var content = JsonConvert.DeserializeObject<List<AnalysisAmDto>>(rDto.Content);
+                    amList = content.OrderBy(x => x.nIndex).ToList();
                 }
             }
 
@@ -56,16 +57,24 @@ namespace CariWeb.Analysis
             var zdData = new List<int>();
             var tdData = new List<int>();
             var tbzdData = new List<int>();
-            for (int i = 0; i < mines.Count; i++)
+            foreach (var item in amList)
             {
-                xAxisData.Add(mines[i].CoalName);
-                var @default = amList.FirstOrDefault(x => x.strFrameName == mines[i].CoalName);
-
-                ybData.Add(@default?.nYB ?? 0);
-                zdData.Add(@default?.nZD ?? 0);
-                tdData.Add(@default?.nTD ?? 0);
-                tbzdData.Add(@default?.nTBZD ?? 0);
+                xAxisData.Add(item.strFrameName);
+                ybData.Add(item.nYB);
+                zdData.Add(item.nZD);
+                tdData.Add(item.nTD);
+                tbzdData.Add(item.nTBZD);
             }
+            //for (int i = 0; i < mines.Count; i++)
+            //{
+            //    xAxisData.Add(mines[i].CoalName);
+            //    var @default = amList.FirstOrDefault(x => x.strFrameName == mines[i].CoalName);
+
+            //    ybData.Add(@default?.nYB ?? 0);
+            //    zdData.Add(@default?.nZD ?? 0);
+            //    tdData.Add(@default?.nTD ?? 0);
+            //    tbzdData.Add(@default?.nTBZD ?? 0);
+            //}
 
             apiData.Add("一般事故", ybData);
             apiData.Add("重大事故", zdData);

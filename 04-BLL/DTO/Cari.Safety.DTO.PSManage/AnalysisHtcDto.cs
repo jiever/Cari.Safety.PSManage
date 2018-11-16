@@ -14,5 +14,6 @@ namespace Cari.Safety.DTO.PSManage
         public int nYBFX { get; set; }
         public int nJDFX { get; set; }
         public int nZDFX { get; set; }
+        public int nIndex { get; set; }
     }
 }

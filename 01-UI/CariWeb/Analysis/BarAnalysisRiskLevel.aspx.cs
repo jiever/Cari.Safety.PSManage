@@ -28,13 +28,13 @@ namespace CariWeb.Analysis
             var apiData = new Dictionary<string, List<int>>();
             var xAxisData = new List<string>(){};//矿名
             var series = new List<object>();
-            var mines = new List<CoalKeyDto>();
+            //var mines = new List<CoalKeyDto>();
 
-            var responseDto = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=");
-            if (responseDto.StatusCode == "OK")
-            {
-                mines = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
-            }
+            //var responseDto = RequestToApi.Get($"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/common/GetCoalKeys?strCoalName=");
+            //if (responseDto.StatusCode == "OK")
+            //{
+            //    mines = JsonConvert.DeserializeObject<List<CoalKeyDto>>(responseDto.Content);
+            //}
             //获取当年风险等级数据
             var url = $"{ConfigurationManager.AppSettings["IPToApi"].ToString()}/api/Risk/GetRiskCount";
             var postData = new
@@ -48,7 +48,8 @@ namespace CariWeb.Analysis
             {
                 if (rDto.Content != null)
                 {
-                    riskList = JsonConvert.DeserializeObject<List<AnalysisRiskDto>>(responseDto.Content);
+                     var content = JsonConvert.DeserializeObject<List<AnalysisRiskDto>>(rDto.Content);
+                    riskList = content.OrderBy(x => x.nIndex).ToList();
                 }
             }
 
@@ -56,15 +57,23 @@ namespace CariWeb.Analysis
             var ybData = new List<int>();
             var jdData = new List<int>();
             var zdData = new List<int>();
-            for (int i = 0; i < mines.Count; i++)
+            foreach (var item in riskList)
             {
-                xAxisData.Add(mines[i].CoalName);
-                var @default = riskList.FirstOrDefault(x => x.strFrameName == mines[i].CoalName);
-                dData.Add(@default?.nDFX ?? 0);
-                ybData.Add(@default?.nYBFX ?? 0);
-                jdData.Add(@default?.nJDFX ?? 0);
-                zdData.Add(@default?.nZDFX ?? 0);
+                xAxisData.Add(item.strFrameName);
+                dData.Add(item.nDFX);
+                ybData.Add(item.nYBFX);
+                jdData.Add(item.nJDFX);
+                zdData.Add(item.nZDFX);
             }
+            //for (int i = 0; i < mines.Count; i++)
+            //{
+            //    xAxisData.Add(mines[i].CoalName);
+            //    var @default = riskList.FirstOrDefault(x => x.strFrameName == mines[i].CoalName);
+            //    dData.Add(@default?.nDFX ?? 0);
+            //    ybData.Add(@default?.nYBFX ?? 0);
+            //    jdData.Add(@default?.nJDFX ?? 0);
+            //    zdData.Add(@default?.nZDFX ?? 0);
+            //}
             apiData.Add("低风险", dData);
             apiData.Add("一般风险", ybData);
             apiData.Add("较大风险", jdData);

@@ -39,7 +39,8 @@
                 ],
                 yAxis: [
                     {
-                        type: 'value'
+                        type: 'value',
+                        name: '起'
                     }
                 ],
                 series: series

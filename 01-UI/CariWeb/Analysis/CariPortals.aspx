@@ -19,18 +19,18 @@
     <table id="main">
         <tr>
             <td>
-                <iframe name="iframe1" src="CircleAnalysisHtc.aspx" scrolling="no"></iframe>
+                <iframe name="CircleHtcFrame" id ="CircleHtcFrame" src="CircleAnalysisHtc.aspx" scrolling="no"></iframe>
             </td>
             <td>
-                <iframe name="iframe2" src="BarAnalysisHtc.aspx" scrolling="no"></iframe>
+                <iframe name="BarHtcFrame" id="BarHtcFrame" src="BarAnalysisHtc.aspx" scrolling="no"></iframe>
             </td>
         </tr>
         <tr>
             <td>
-                <iframe name="iframe3" src="BarAnalysisRiskLevel.aspx" scrolling="no"></iframe>
+                <iframe name="BarRiskFrame" id="BarRiskFrame" src="BarAnalysisRiskLevel.aspx" scrolling="no"></iframe>
             </td>
             <td>
-                <iframe name="iframe4" src="BarAnalysisAm.aspx" scrolling="no"></iframe>
+                <iframe name="BarAmFrame" id="BarAmFrame" src="BarAnalysisAm.aspx" scrolling="no"></iframe>
             </td>
         </tr>
     </table>

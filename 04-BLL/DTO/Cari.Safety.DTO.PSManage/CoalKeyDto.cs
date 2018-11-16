@@ -9,7 +9,7 @@ namespace Cari.Safety.DTO.PSManage
     public class CoalKeyDto
     {
         public string CoalName { get; set; }
-
         public string Key { get; set; }
+        public int nIndex { get; set; }
     }
 }

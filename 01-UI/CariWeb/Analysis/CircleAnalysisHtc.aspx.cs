@@ -45,7 +45,7 @@ namespace CariWeb.Analysis
             var postData = new
             {
                 key = ConfigurationManager.AppSettings["AllMineKey"],
-                strStart = DateTime.Now.Date.ToString("yyyy-MM-dd HH:mm:ss"),
+                strStart = DateTime.Now.Date.AddDays(-7).ToString("yyyy-MM-dd HH:mm:ss"),
                 strEnd = DateTime.Now.Date.AddDays(1).AddSeconds(-1).ToString("yyyy-MM-dd HH:mm:ss"),
             };
             var result = new List<CircleDto>();
@@ -55,11 +55,13 @@ namespace CariWeb.Analysis
                 if (responseDto.Content != null)
                 {
                     var list = JsonConvert.DeserializeObject<List<AnalysisHtcDto>>(responseDto.Content);
-                    result.AddRange(list.Select(x=>new CircleDto()
+                    //LogManager.Info($"list Data:{JsonConvert.SerializeObject(list)}");
+                    result.AddRange(list.OrderBy(x => x.nIndex).Select(x=>new CircleDto()
                     {
                         value = x.nYHCount,
                         name= x.strFrameName
                     }));
+                    LogManager.Info($"CircleAnalysisHtc POST Data:{JsonConvert.SerializeObject(result)}");
                 }
                 else
                 {

@@ -11,18 +11,18 @@
     <script>
         var myChart = echarts.init(document.getElementById('chart'));
 
-        $(function() {
+        $(function () {
             var url =  "<%=ResolveUrl("~/Analysis/CircleAnalysisHtc.aspx?type=data") %>";
             $.post(url,
                 "",
                 function (ret) {
+                    var arr = new Array();
                     if (ret && ret.length > 0) {
-                        var arr = new Array();
                         for (var i = 0; i < ret.length; i++) {
                             arr.push(ret[i].name);
                         }
-                        chartOption("隐患分布图", ret, arr);
                     }
+                    chartOption("隐患分布图", ret, arr);
                 },
                 'json');
         });
